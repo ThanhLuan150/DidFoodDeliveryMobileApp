@@ -1,9 +1,10 @@
+import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const OnboardingIntroduceNext2 = () =>{
     const navigation = useNavigation();
     const handleLogin = () => {
-        navigation.navigate('Login'); 
+        navigation.navigate('SignIn'); 
       };
     return(
         <ImageBackground  source={require('../../assets/Onboardings/3Onboarding.png')}style={styles.imageBackground}>
@@ -72,7 +73,7 @@ const styles =StyleSheet.create({
     textNext:{
         textAlign:'center',
         fontSize:16,
-        fontWeight:'400',
+        fontWeight:'600',
         lineHeight:20.96,
         color:'white'
     }
