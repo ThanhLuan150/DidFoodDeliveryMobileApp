@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import OnboardingIntroduce from './Screens/Onboarding/OnboardingIntroduce';
 import OnboardingIntroduceNext1 from './Screens/Onboarding/OnboardingInroduceNext1';
 import OnboardingIntroduceNext2 from './Screens/Onboarding/OnboardingInroduceNext2';
+import SignInScreen from './Screens/Author/SignInScreen';
+import SignUpScreen from './Screens/Author/SignUpScreen';
 export default function App() {
   const Stack = createStackNavigator();
   return (
@@ -13,6 +15,8 @@ export default function App() {
       <Stack.Screen name="OnboardingIntroduce" component={OnboardingIntroduce}   options={{ headerShown: false }} />
       <Stack.Screen name="OnboardingIntroduceNext1" component={OnboardingIntroduceNext1}   options={{ headerShown: false }} />
       <Stack.Screen name="OnboardingIntroduceNext2" component={OnboardingIntroduceNext2}   options={{ headerShown: false }}/>
+      <Stack.Screen name="SignIn" component={SignInScreen}   options={{ headerShown: false }}/>
+      <Stack.Screen name="SignUp" component={SignUpScreen}   options={{ headerShown: false }}/>
     </Stack.Navigator>
     <StatusBar style="auto" />
   </NavigationContainer>
