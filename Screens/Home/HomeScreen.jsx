@@ -15,7 +15,7 @@ const HomeScreen = () =>{
                 </View>
                 <View style={styles.viewSearch}>
                     <View style={styles.viewsearch}>
-                        <Image source={require('../../assets/Home/Search.png')} style={{ position:'relative',left:50,top:16 }}></Image>
+                        <Image source={require('../../assets/Home/Search.png')} style={{ position:'relative',left:50,top:13 }}></Image>
                         <TextInput style={styles.textInput} placeholder="What do you want to order"/>
                     </View>
                     <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
