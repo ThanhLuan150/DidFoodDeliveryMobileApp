@@ -1,8 +1,25 @@
 import React from "react";
-import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput } from "react-native";
-import Svg, { Path } from 'react-native-svg';
-
+import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 const HomeScreen = () =>{
+  const products = [
+    { id: 1,
+      image: require('../../assets/Home/mage.png'), 
+      nameProduct: 'Vegan Resto', 
+      min:'12 min' 
+    },
+    { id: 2,
+      image: require('../../assets/Home/Heaththy.png'), 
+      nameProduct: 'Vegan Resto', 
+      nameProduct: 'Healthy Resto', 
+      min:'13 min' 
+    },
+    { id: 3,
+      image: require('../../assets/Home/luamach.png'), 
+      nameProduct: 'Vegan Resto', 
+      nameProduct: 'Good Food', 
+      min:'14 min' 
+    },
+  ];
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -38,22 +55,21 @@ const HomeScreen = () =>{
                     <Text style={styles.textNe}>Nearest Restaurant</Text>
                     <Text style={styles.textviewMore}>View More</Text>
                 </View>
-                <View style={styles.viewListItem}>
-                    <View style={styles.viewItem}>
-                        <View style={styles.viewImage}>
-                            <Image source={require('../../assets/Home/mage.png')}></Image>
+                <FlatList
+                      data={products}
+                      horizontal={true}
+                      style={styles.viewListItem}
+                      contentContainerStyle={{gap: 10 }}
+                      renderItem={({ item }) => (
+                        <View style={styles.viewItem} key={item.id}>
+                          <View style={styles.viewImage}>
+                            <Image source={item.image} />
+                          </View>
+                          <Text style={styles.textVegan}>{item.nameProduct}</Text>
+                          <Text style={styles.textMin}>{item.min}</Text>
                         </View>
-                        <Text style={styles.textVegan}>Vegan Resto</Text>
-                        <Text style={styles.textMin}>12 Mins</Text>
-                    </View>
-                    <View style={styles.viewItem}>
-                        <View style={styles.viewImage}>
-                            <Image  source={require('../../assets/Home/Heaththy.png')}></Image>
-                        </View>
-                        <Text style={styles.textVegan}>Vegan Resto</Text>
-                        <Text style={styles.textMin}>12 Mins</Text>
-                    </View>
-                </View>
+                      )}
+                />
             </ScrollView>
         </ImageBackground>
     )
@@ -158,10 +174,10 @@ const styles = StyleSheet.create({
       viewListItem:{
         paddingTop:20,
         paddingBottom:20,
-        paddingLeft:25,
-        paddingRight:25,
+        paddingLeft:15,
+        paddingRight:15,
         flexDirection:'row',
-        gap:10
+        width:'100%'
       },
       viewItem: {
         backgroundColor: 'white',
@@ -199,11 +215,6 @@ const styles = StyleSheet.create({
         color:'#22242E',
         textAlign:'center',
     }
-
-
-
-
-
       
 }
   
