@@ -163,6 +163,8 @@ const styles = StyleSheet.create({
       },
       viewItem: {
         backgroundColor: 'white',
+        borderWidth:1,
+        borderColor:'#6B50F6',
         borderRadius: 22,
         shadowColor: 'rgba(90, 108, 234, 0.07)',
         shadowOffset: { width: 12, height: 26 },
