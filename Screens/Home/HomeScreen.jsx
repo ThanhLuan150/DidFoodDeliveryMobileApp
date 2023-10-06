@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
       },
       viewbannera:{
         paddingLeft:30,
+        paddingRight:10
         
       },
       viewSpTou:{
