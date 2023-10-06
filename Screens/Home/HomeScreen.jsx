@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
         paddingLeft:25,
         paddingRight:25,
         flexDirection:'row',
-        justifyContent:'space-between'
+        gap:10
       },
       viewItem: {
         backgroundColor: 'white',
