@@ -95,8 +95,9 @@ const styles = StyleSheet.create({
         height:50
       },
       viewbannera:{
-        paddingLeft:30,
-        paddingRight:10
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center'
         
       },
       viewSpTou:{
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
       },
       viewSpecial:{
         paddingTop:30,
-        paddingLeft:203
+        paddingLeft:185
       },
       textSpecial:{
         fontSize:17,
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
         color:'white'
       },
       viewbutton:{
-        paddingLeft:203,
+        paddingLeft:185,
         paddingRight:70,
         paddingTop:15
       },
