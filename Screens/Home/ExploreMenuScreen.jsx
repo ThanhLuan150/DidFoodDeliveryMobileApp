@@ -1,5 +1,6 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 const ExploreMenu = () =>{
   const Menu =[
     { id: 1,
@@ -21,6 +22,10 @@ const ExploreMenu = () =>{
       price:'$15' 
     },
   ]
+  const navigation = useNavigation();
+  const handleFilterScreen = () =>{
+    navigation.navigate('FilterScreen')
+  }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -34,33 +39,35 @@ const ExploreMenu = () =>{
                 <View style={styles.viewSearch}>
                     <View style={styles.viewsearch}>
                         <Image source={require('../../assets/Home/Search.png')} style={{ position:'relative',left:50,top:13 }}></Image>
-                        <TextInput style={styles.textInput} placeholder="What do you want to order"/>
+                        <TouchableOpacity style={styles.textInput} placeholder="What do you want to order" onPress={handleFilterScreen}/>
                     </View>
                     <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
                 </View>
                <View style={styles.viewNeVi}>
                     <Text style={styles.textNe}>Popular Menu</Text>
                 </View>
-                <FlatList
-                      data={Menu}
-                      horizontal={false}
-                      style={styles.viewListItem}
-                      contentContainerStyle={{gap: 31, width:'100%' }}
-                      renderItem={({ item }) => (
-                        <View style={styles.viewMenu} key={item.id}>
-                          <View style={styles.viewImageMenu}>
-                            <Image source={item.image} />
-                            <View style={styles.viewTexts}>
-                              <Text style={styles.textmenu}>{item.nameMenu}</Text>
-                              <Text style={styles.textName}>{item.name}</Text>
+                <View>
+                  <FlatList
+                        data={Menu}
+                        horizontal={false}
+                        style={styles.viewListItem}
+                        contentContainerStyle={{gap: 31, width:'100%' }}
+                        renderItem={({ item }) => (
+                          <View style={styles.viewMenu} key={item.id}>
+                            <View style={styles.viewImageMenu}>
+                              <Image source={item.image} />
+                              <View style={styles.viewTexts}>
+                                <Text style={styles.textmenu}>{item.nameMenu}</Text>
+                                <Text style={styles.textName}>{item.name}</Text>
+                              </View>
+                            </View>
+                            <View style={styles.viewPrice}>
+                                <Text style={styles.textPrice}>{item. price}</Text>
                             </View>
                           </View>
-                          <View style={styles.viewPrice}>
-                              <Text style={styles.textPrice}>{item. price}</Text>
-                          </View>
-                        </View>
-                      )}
-                />
+                        )}
+                  />
+                </View>
             </ScrollView>
         </ImageBackground>
     )
