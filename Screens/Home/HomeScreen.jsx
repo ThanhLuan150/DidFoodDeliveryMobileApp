@@ -61,6 +61,9 @@ const HomeScreen = () =>{
     const handleExploreMenu  = () => {
         navigation.navigate('ExploreMenu'); 
       };
+    const handleFilterScreen = () =>{
+      navigation.navigate('FilterScreen')
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -74,7 +77,7 @@ const HomeScreen = () =>{
                 <View style={styles.viewSearch}>
                     <View style={styles.viewsearch}>
                         <Image source={require('../../assets/Home/Search.png')} style={{ position:'relative',left:50,top:13 }}></Image>
-                        <TextInput style={styles.textInput} placeholder="What do you want to order"/>
+                        <TouchableOpacity style={styles.textInput} placeholder="What do you want to order" onPress={handleFilterScreen}/>
                     </View>
                     <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
                 </View>
@@ -115,26 +118,28 @@ const HomeScreen = () =>{
                     <Text style={styles.textNe}>Popular Menu</Text>
                     <Text style={styles.textviewMore} onPress={handleExploreMenu }>View More</Text>
                 </View>
-                <FlatList
-                      data={Menu}
-                      horizontal={false}
-                      style={styles.viewListItem}
-                      contentContainerStyle={{gap: 31, width:'100%' }}
-                      renderItem={({ item }) => (
-                        <View style={styles.viewMenu} key={item.id}>
-                          <View style={styles.viewImageMenu}>
-                            <Image source={item.image} />
-                            <View style={styles.viewTexts}>
-                              <Text style={styles.textmenu}>{item.nameMenu}</Text>
-                              <Text style={styles.textName}>{item.name}</Text>
+                <View>
+                  <FlatList
+                        data={Menu}
+                        horizontal={false}
+                        style={styles.viewListItem}
+                        contentContainerStyle={{gap: 31, width:'100%' }}
+                        renderItem={({ item }) => (
+                          <View style={styles.viewMenu} key={item.id}>
+                            <View style={styles.viewImageMenu}>
+                              <Image source={item.image} />
+                              <View style={styles.viewTexts}>
+                                <Text style={styles.textmenu}>{item.nameMenu}</Text>
+                                <Text style={styles.textName}>{item.name}</Text>
+                              </View>
+                            </View>
+                            <View style={styles.viewPrice}>
+                                <Text style={styles.textPrice}>{item. price}</Text>
                             </View>
                           </View>
-                          <View style={styles.viewPrice}>
-                              <Text style={styles.textPrice}>{item. price}</Text>
-                          </View>
-                        </View>
-                      )}
-                />
+                        )}
+                  />
+                </View>
             </ScrollView>
         </ImageBackground>
     )
@@ -203,7 +208,7 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         elevation: 5, 
         shadowOpacity: 1,
-         shadowRadius: 20 ,
+        shadowRadius: 20 ,
         paddingTop:10,
         paddingBottom:10,
         paddingLeft:15,
@@ -212,7 +217,7 @@ const styles = StyleSheet.create({
       },
       textbuy:{
         fontSize:10,
-        Color: '#6B50F6',
+        color: '#6B50F6',
         fontWeight:'600',
         lineHeight:13.10
       },

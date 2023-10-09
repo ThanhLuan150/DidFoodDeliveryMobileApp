@@ -1,5 +1,6 @@
 import React from "react";
-import { View ,ImageBackground,StyleSheet, Text, ScrollView,Image, TextInput, FlatList } from "react-native"
+import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 const ExploreRestaurant = () =>{
   const products = [
     { id: 1,
@@ -33,6 +34,10 @@ const ExploreRestaurant = () =>{
       min:'14 min' 
     },
   ];
+  const navigation = useNavigation();
+  const handleFilterScreen = () =>{
+    navigation.navigate('FilterScreen')
+  }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -46,7 +51,7 @@ const ExploreRestaurant = () =>{
                 <View style={styles.viewSearch}>
                     <View style={styles.viewsearch}>
                         <Image source={require('../../assets/Home/Search.png')} style={{ position:'relative',left:50,top:13 }}></Image>
-                        <TextInput style={styles.textInput} placeholder="What do you want to order"/>
+                        <TouchableOpacity style={styles.textInput} placeholder="What do you want to order" onPress={handleFilterScreen}/>
                     </View>
                     <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
                 </View>

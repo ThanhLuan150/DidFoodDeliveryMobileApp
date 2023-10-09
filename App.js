@@ -14,6 +14,7 @@ import CallScreen from './Screens/Chat/CallScreen';
 import CartScreen from './Screens/Cart/CartScreen';
 import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
 import ExploreMenu from './Screens/Home/ExploreMenuScreen';
+import FilterScreen from './Screens/Home/FilterScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,6 +64,7 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="ExploreRestaurant" component={ExploreRestaurant} options={{ headerShown: false }} />
         <Stack.Screen name="ExploreMenu" component={ExploreMenu} options={{ headerShown: false }} />
+        <Stack.Screen name="FilterScreen" component={FilterScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
