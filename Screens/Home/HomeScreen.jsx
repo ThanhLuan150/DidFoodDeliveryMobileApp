@@ -38,22 +38,28 @@ const HomeScreen = () =>{
     { id: 1,
       image: require('../../assets/Home/MenuPhoto.png'), 
       nameMenu: 'Herbar Pancake',
+      name:'Warung Herbal',
       price:'$7' 
     },
     { id: 2,
       image: require('../../assets/Home/Menu.png'), 
       nameMenu: 'Fruit Salad', 
+      name:'Wijie Resto',
       price:'$5' 
     },
     { id: 3,
       image: require('../../assets/Home/Photo.png'), 
       nameMenu: 'Green  Noddle',
+      name:'Noodle Home',
       price:'$15' 
     },
   ]
   const navigation = useNavigation();
     const handleExploreRestaurant  = () => {
         navigation.navigate('ExploreRestaurant'); 
+      };
+    const handleExploreMenu  = () => {
+        navigation.navigate('ExploreMenu'); 
       };
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -107,7 +113,7 @@ const HomeScreen = () =>{
                 />
                <View style={styles.viewNeVi}>
                     <Text style={styles.textNe}>Popular Menu</Text>
-                    <Text style={styles.textviewMore}>View More</Text>
+                    <Text style={styles.textviewMore} onPress={handleExploreMenu }>View More</Text>
                 </View>
                 <FlatList
                       data={Menu}

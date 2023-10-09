@@ -13,6 +13,7 @@ import ProfileScreen from './Screens/Profile/ProfileScreen';
 import CallScreen from './Screens/Chat/CallScreen';
 import CartScreen from './Screens/Cart/CartScreen';
 import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
+import ExploreMenu from './Screens/Home/ExploreMenuScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -61,6 +62,7 @@ export default function App() {
           )}
         </Stack.Screen>
         <Stack.Screen name="ExploreRestaurant" component={ExploreRestaurant} options={{ headerShown: false }} />
+        <Stack.Screen name="ExploreMenu" component={ExploreMenu} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
