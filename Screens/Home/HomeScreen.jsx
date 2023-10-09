@@ -1,5 +1,6 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 const HomeScreen = () =>{
   const products = [
     { id: 1,
@@ -9,14 +10,12 @@ const HomeScreen = () =>{
     },
     { id: 2,
       image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Vegan Resto', 
-      nameProduct: 'Healthy Resto', 
+      nameProduct: 'Vegan Resto',
       min:'13 min' 
     },
     { id: 3,
       image: require('../../assets/Home/luamach.png'), 
       nameProduct: 'Vegan Resto', 
-      nameProduct: 'Good Food', 
       min:'14 min' 
     },
     { id: 4,
@@ -26,14 +25,12 @@ const HomeScreen = () =>{
     },
     { id: 5,
       image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Vegan Resto', 
-      nameProduct: 'Healthy Resto', 
+      nameProduct: 'Vegan Resto',  
       min:'13 min' 
     },
     { id: 6,
       image: require('../../assets/Home/luamach.png'), 
-      nameProduct: 'Vegan Resto', 
-      nameProduct: 'Good Food', 
+      nameProduct: 'Vegan Resto',  
       min:'14 min' 
     },
   ];
@@ -41,22 +38,23 @@ const HomeScreen = () =>{
     { id: 1,
       image: require('../../assets/Home/MenuPhoto.png'), 
       nameMenu: 'Herbar Pancake',
-      name:'Warung Herbal',
       price:'$7' 
     },
     { id: 2,
       image: require('../../assets/Home/Menu.png'), 
       nameMenu: 'Fruit Salad', 
-      name:'Wijie Resto',
       price:'$5' 
     },
     { id: 3,
       image: require('../../assets/Home/Photo.png'), 
       nameMenu: 'Green  Noddle',
-      name:'Noodle Home',
       price:'$15' 
     },
   ]
+  const navigation = useNavigation();
+    const handleExploreRestaurant  = () => {
+        navigation.navigate('ExploreRestaurant'); 
+      };
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -90,7 +88,7 @@ const HomeScreen = () =>{
                 </View>
                 <View style={styles.viewNeVi}>
                     <Text style={styles.textNe}>Nearest Restaurant</Text>
-                    <Text style={styles.textviewMore}>View More</Text>
+                    <Text style={styles.textviewMore}onPress={handleExploreRestaurant}>View More</Text>
                 </View>
                 <FlatList
                       data={products}
@@ -143,7 +141,6 @@ const styles = StyleSheet.create({
       viewFiFa:{
         paddingTop:60,
         paddingLeft:31,
-        paddingLeft:39,
         flexDirection:'row',
         justifyContent:'space-between',
       },

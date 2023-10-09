@@ -1,0 +1,64 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "image": "../assets/Home/mage.png",
+        "nameProduct": "Vegan Resto",
+        "min": "12 min"
+      },
+      {
+        "id": 2,
+        "image": "../assets/Home/Heaththy.png",
+        "nameProduct":  "Healthy Resto",
+        "min": "13 min"
+      },
+      {
+        "id": 3,
+        "image": "../assets/Home/luamach.png",
+        "nameProduct": "Good Food",
+        "min": "14 min"
+      },
+      {
+        "id": 4,
+        "image": "../assets/Home/mage.png",
+        "nameProduct":"Vegan Resto",
+        "min": "12 min"
+      },
+      {
+        "id": 5,
+        "image": "../assets/Home/Heaththy.png",
+        "nameProduct":  "Healthy Resto",
+        "min": "13 min"
+      },
+      {
+        "id": 6,
+        "image": "../assets/Home/luamach.png",
+        "nameProduct":  "Good Food",
+        "min": "14 min"
+      }
+    ],
+    "menu": [
+      {
+        "id": 1,
+        "image": "../assets/Home/MenuPhoto.png",
+        "nameMenu": "Herbar Pancake",
+        "name": "Warung Herbal",
+        "price": "$7"
+      },
+      {
+        "id": 2,
+        "image": "../assets/Home/Menu.png",
+        "nameMenu": "Fruit Salad",
+        "name": "Wijie Resto",
+        "price": "$5"
+      },
+      {
+        "id": 3,
+        "image": "../assets/Home/Photo.png",
+        "nameMenu": "Green Noddle",
+        "name": "Noodle Home",
+        "price": "$15"
+      }
+    ]
+  }
+  
