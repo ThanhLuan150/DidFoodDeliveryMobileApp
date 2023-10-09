@@ -100,48 +100,6 @@ const styles = StyleSheet.create({
         color:'black',
         height:50
       },
-      viewbannera:{
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center'
-        
-      },
-      viewSpTou:{
-        position:'absolute',
-      },
-      viewSpecial:{
-        paddingTop:30,
-        paddingLeft:185
-      },
-      textSpecial:{
-        fontSize:17,
-        fontWeight:'600',
-        lineHeight:22.27,
-        color:'white'
-      },
-      viewbutton:{
-        paddingLeft:185,
-        paddingRight:70,
-        paddingTop:15
-      },
-      button:{
-        width:'100%',
-        backgroundColor:'white',
-        elevation: 5, 
-        shadowOpacity: 1,
-         shadowRadius: 20 ,
-        paddingTop:10,
-        paddingBottom:10,
-        paddingLeft:15,
-        paddingRight:15,
-        borderRadius:6
-      },
-      textbuy:{
-        fontSize:10,
-        Color: '#6B50F6',
-        fontWeight:'600',
-        lineHeight:13.10
-      },
       viewNeVi:{
         flexDirection:'row',
         justifyContent:'space-between',
@@ -155,12 +113,6 @@ const styles = StyleSheet.create({
         lineHeight:19.65,
         color:'#22242E'
       },
-      textviewMore:{
-        fontSize:12,
-        fontWeight:'400',
-        lineHeight:15.72,
-        color:'#6B50F6'
-      },
       viewListItem:{
         paddingTop:20,
         paddingBottom:20,
@@ -169,41 +121,6 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         width:'100%'
       },
-      viewItem: {
-        backgroundColor: 'white',
-        borderWidth:1,
-        borderColor:'#6B50F6',
-        borderRadius: 22,
-        shadowColor: 'rgba(90, 108, 234, 0.07)',
-        shadowOffset: { width: 12, height: 26 },
-        shadowOpacity: 1,
-        shadowRadius: 50,
-        elevation: 5, // Điều chỉnh giá trị để thay đổi độ sâu của bóng đổ (cho Android)
-      }
-    ,viewImage:{
-        paddingLeft:21,
-        paddingRight:30,
-        paddingBottom:17,
-        paddingTop:20
-    },
-    textVegan:{
-        fontSize:16,
-        fontWeight:'600',
-        lineHeight:20.96,
-        color:'#22242E',
-        textAlign:'center',
-        paddingLeft:25,
-        paddingRight:25,
-        paddingBottom:4
-    },
-    textMin:{
-        fontSize:13,
-        paddingBottom:26,
-        fontWeight:'400',
-        lineHeight:17.03,
-        color:'#22242E',
-        textAlign:'center',
-    } ,
     viewMenu:{
       flexDirection:'row',
       justifyContent:'space-between',
