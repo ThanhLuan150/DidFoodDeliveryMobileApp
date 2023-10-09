@@ -12,6 +12,7 @@ import HomeScreen from './Screens/Home/HomeScreen';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import CallScreen from './Screens/Chat/CallScreen';
 import CartScreen from './Screens/Cart/CartScreen';
+import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,6 +60,7 @@ export default function App() {
             </Tab.Navigator>
           )}
         </Stack.Screen>
+        <Stack.Screen name="ExploreRestaurant" component={ExploreRestaurant} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
