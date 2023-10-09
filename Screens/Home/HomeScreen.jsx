@@ -64,6 +64,9 @@ const HomeScreen = () =>{
     const handleFilterScreen = () =>{
       navigation.navigate('FilterScreen')
     }
+    const handleNotification = () =>{
+      navigation.navigate('NotificationScreen')
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -72,7 +75,9 @@ const HomeScreen = () =>{
                         <Text style={styles.textFine}>Fine Your</Text>
                         <Text style={styles.textFine}>Favorite Food</Text>
                     </View>
-                    <Image  source={require('../../assets/Home/Notification.png')}></Image>
+                    <TouchableOpacity onPress={handleNotification}>
+                        <Image  source={require('../../assets/Home/Notification.png')}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.viewSearch}>
                     <View style={styles.viewsearch}>
