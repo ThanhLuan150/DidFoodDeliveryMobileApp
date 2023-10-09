@@ -64,6 +64,11 @@ const FilterScreen = () =>{
                     <Text style={styles.textRes}>Dessert</Text>
                 </TouchableOpacity>
             </View>
+            <View style={styles.viewbuttonSearch}>
+                <TouchableOpacity  style={styles.Search}>
+                    <Text style={styles.textbuttonSearch}>Search</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     </ImageBackground>
     )
@@ -138,7 +143,25 @@ const styles =StyleSheet.create({
         color:'#6B50F6',
         fontSize:12,
         fontWeight:'500'
+      },
+      viewbuttonSearch:{
+        paddingTop:50,
+        paddingLeft:25,
+        paddingRight:25
+      },
+      Search:{
+        backgroundColor:'#6B50F6',
+        paddingTop:21,
+        paddingBottom:21,
+        borderRadius:15
+      },
+      textbuttonSearch:{
+        color:'#FEFEFF',
+        fontSize:15,
+        fontWeight:'500',
+        textAlign:'center'
       }
+
 
 })
 export default FilterScreen;
