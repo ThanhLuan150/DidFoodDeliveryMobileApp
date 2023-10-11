@@ -2,7 +2,7 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text } from "react-
 import { useNavigation } from '@react-navigation/native';
 const SignUpScreen  = ()=>{
     const navigation = useNavigation();
-    const handleOnboardingIntroduceNext9 = () => {
+    const handleOnboardingIntroduceNext = () => {
         navigation.navigate('OnboardingIntroduceNext2'); 
       };
     return(
