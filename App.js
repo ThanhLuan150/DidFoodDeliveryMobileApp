@@ -16,7 +16,6 @@ import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
 import ExploreMenu from './Screens/Home/ExploreMenuScreen';
 import FilterScreen from './Screens/Home/FilterScreen';
 import NotificationScreen from './Screens/Notification/NotificationScreen';
-import SignUpProcessScreen from './Screens/Author/SignUpProcessScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,13 +23,12 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SignUpProcessScreen">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="OnboardingIntroduce" component={OnboardingIntroduce} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext1" component={OnboardingIntroduceNext1} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext2" component={OnboardingIntroduceNext2} options={{ headerShown: false }} />
         <Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
         <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="SignUpProcessScreen" component={SignUpProcessScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
