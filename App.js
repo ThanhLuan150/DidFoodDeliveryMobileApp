@@ -23,6 +23,7 @@ import SetLocationScreen from './Screens/Author/SetLocationScreen';
 import SignUpSucessfullyNotificationScreen from './Screens/Author/SignUpSucessfullyNotificationScreen';
 import ForgetPasswordScreen from './Screens/Author/ViaMethodScreen';
 import VerifycationCodeScreen from './Screens/Author/VerifycationCodeScreen';
+import PasswordEditSuccesfullyScreen from './Screens/Author/PasswordEditSuccessfullyScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -43,6 +44,7 @@ export default function App() {
         <Stack.Screen name="SignUpSucessfullyScreen" component={SignUpSucessfullyNotificationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ForgetPasswordScreen" component={ForgetPasswordScreen} options={{ headerShown: false }} />
         <Stack.Screen name="VerifycationCodeScreen" component={VerifycationCodeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PasswordEditSuccesfullyScreen" component={PasswordEditSuccesfullyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
