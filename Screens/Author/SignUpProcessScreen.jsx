@@ -6,10 +6,15 @@ const SignUpProcessScreen   = ()=>{
     const handleNext = () => {
         navigation.navigate('UploadPhotoScreen'); 
       };
+      const handleGoBack = () => {
+        navigation.goBack();
+      };
     return(
         <ImageBackground  source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
-            <View style={styles.viewGpBack}>
-                <Image source={require('../../assets/Notification/Group.png')}></Image>
+            <View style={styles.viewGpBack} >
+                <TouchableOpacity onPress={handleGoBack}>
+                     <Image source={require('../../assets/Notification/Group.png')} ></Image>
+                </TouchableOpacity>  
             </View>
             <View style={ styles.viewFill}>
                 <Text style={ styles.textFill}>Fill in your bio to get</Text>

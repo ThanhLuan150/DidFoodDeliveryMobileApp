@@ -2,8 +2,11 @@ import { View ,ImageBackground,StyleSheet,Image, TextInput,TouchableOpacity, Tex
 import { useNavigation } from '@react-navigation/native';
 const SignUpScreen  = ()=>{
     const navigation = useNavigation();
-    const handleOnboardingIntroduceNext = () => {
-        navigation.navigate('OnboardingIntroduceNext2'); 
+    const handleLoginScreen = () => {
+        navigation.navigate('SignIn'); 
+      };
+      const handleLoginScreen1 = () => {
+        navigation.navigate('SignIn'); 
       };
     return(
         <ImageBackground source={require('../../assets/Signup_Signin/Signin.png')} style={styles.imageBackground} >
@@ -30,9 +33,10 @@ const SignUpScreen  = ()=>{
                 <Text style ={styles.textKeep}>Email Me About Special Pricing</Text>
             </View>
             <View style={styles.viewButton}>
-                <TouchableOpacity style={styles.button}>
-                    <Text sty={styles.textbutton}>Create Account</Text>
+                <TouchableOpacity style={styles.button} onPress={handleLoginScreen}>
+                    <Text style={styles.textbutton}>Create Account</Text>
                 </TouchableOpacity>
+                <Text style={styles.textAdready} onPress={handleLoginScreen1}>Adready have an account</Text>
             </View>
         </ImageBackground>
     )
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
         fontWeight:'500'
       },
       viewButton:{
-        paddingTop:44,
+        paddingTop:35,
         paddingLeft:100,
         paddingRight:100
       },
@@ -123,6 +127,13 @@ const styles = StyleSheet.create({
         color:'white',
         textAlign:'center',
         fontWeight:'500'
+      },
+      textAdready:{
+        color:'#6B50F6',
+        fontSize:12,
+        fontWeight:'500',
+        lineHeight:19.98,
+        textAlign:'center'
       }
 })
 
