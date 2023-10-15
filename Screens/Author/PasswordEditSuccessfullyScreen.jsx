@@ -3,9 +3,9 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Ima
 import { useNavigation } from '@react-navigation/native';
 const PasswordEditSuccesfullyScreen  = ()=>{
     const navigation = useNavigation();
-    // const handleNext = () => {
-    //     navigation.navigate('UploadPhotoScreen'); 
-    //   };
+    const handleNext = () => {
+        navigation.navigate('PasswordSucessfullyScreen'); 
+      };
       const handleGoBack = () => {
         navigation.goBack();
       };
@@ -34,7 +34,7 @@ const PasswordEditSuccesfullyScreen  = ()=>{
             </View>
             <View style={styles.viewNext} >
                 <TouchableOpacity style={styles.buttonNext}>
-                    <Text style={styles.textNext}>Next</Text>
+                    <Text style={styles.textNext}onPress={handleNext}>Next</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
