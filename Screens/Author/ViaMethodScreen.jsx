@@ -3,14 +3,11 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Ima
 import { useNavigation } from '@react-navigation/native';
 const ForgetPasswordScreen  = ()=>{
     const navigation = useNavigation();
-    const handleNext = () => {
-        navigation.navigate('UploadPhotoScreen'); 
-      };
       const handleGoBack = () => {
         navigation.goBack();
       };
       const handleVerifyCodeScreen = () =>{
-        navigation.navigate('')
+        navigation.navigate('VerifycationCodeScreen')
       }
     return(
         <ImageBackground  source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -48,7 +45,7 @@ const ForgetPasswordScreen  = ()=>{
             </View>
             <View style={styles.viewNext} >
                 <TouchableOpacity style={styles.buttonNext}>
-                    <Text style={styles.textNext} onPress={handleNext}>Next</Text>
+                    <Text style={styles.textNext} onPress={handleVerifyCodeScreen}>Next</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
@@ -71,7 +68,7 @@ const styles= StyleSheet.create({
       textFill:{ 
         color:'#22242E',
         fontSize:25,
-        fontWeight:'400'
+        fontWeight:'500'
       },
       viewThis:{
         paddingLeft:25

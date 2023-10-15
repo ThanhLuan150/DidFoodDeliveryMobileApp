@@ -63,7 +63,7 @@ const styles= StyleSheet.create({
       textFill:{ 
         color:'#22242E',
         fontSize:25,
-        fontWeight:'400'
+        fontWeight:'500'
       },
       viewThis:{
         paddingLeft:25
