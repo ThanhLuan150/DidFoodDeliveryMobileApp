@@ -82,7 +82,9 @@ const HomeScreen = () =>{
                 <View style={styles.viewSearch}>
                     <View style={styles.viewsearch}>
                         <Image source={require('../../assets/Home/Search.png')} style={{ position:'relative',left:50,top:13 }}></Image>
-                        <TouchableOpacity style={styles.textInput} placeholder="What do you want to order" onPress={handleFilterScreen}/>
+                        <TouchableOpacity style={styles.textInput} placeholder="What do you want to order" onPress={handleFilterScreen}>
+                            <Text>What do you want to order?</Text>
+                        </TouchableOpacity>
                     </View>
                     <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
                 </View>
