@@ -2,11 +2,11 @@ import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const UploadPhotoScreen  = ()=>{
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+  const handleNext = () => {
+      navigation.navigate('SetLocationScreen'); 
+    };
     const handleGoBack = () => {
-        navigation.goBack();
-      };
-    const handleNext = () => {
         navigation.goBack();
       };
     return(
@@ -35,7 +35,7 @@ const UploadPhotoScreen  = ()=>{
                 </View>
             </View>
             <View style={styles.viewNext} >
-                <TouchableOpacity style={styles.buttonNext}>
+                <TouchableOpacity style={styles.buttonNext} onPress={handleNext}>
                     <Text style={styles.textNext} >Next</Text>
                 </TouchableOpacity>
             </View>
