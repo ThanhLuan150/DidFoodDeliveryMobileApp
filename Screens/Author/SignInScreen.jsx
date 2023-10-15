@@ -6,6 +6,12 @@ const SignInScreen  = ()=>{
     const handleSignUp = () => {
         navigation.navigate('SignUp'); 
       };
+    const handleSignUpProcess = () => {
+        navigation.navigate('SignUpProcessScreen'); 
+      };
+    const handleForgetPassword = () =>{
+      navigation.navigate('ForgetPasswordScreen')
+    }
     return(
         <ImageBackground  source={require('../../assets/Signup_Signin/Signup.png')}style={styles.imageBackground}>
             <View style={styles.view}>
@@ -38,11 +44,11 @@ const SignInScreen  = ()=>{
                     </TouchableOpacity>
                 </View>
                 <View style={styles.viewFoSi}>
-                    <Text style={styles.textFo}>Forgot your passworđ</Text>
+                    <Text style={styles.textFo} onPress={handleForgetPassword}>Forgot your passworđ</Text>
                     <Text style={styles.textFo} onPress={handleSignUp}>Sign Up</Text>
                 </View>
                 <View style={styles.viewNext} >
-                    <TouchableOpacity style={styles.buttonNext}>
+                    <TouchableOpacity style={styles.buttonNext} onPress={handleSignUpProcess}>
                         <Text style={styles.textNext}>Login</Text>
                     </TouchableOpacity>
                 </View>

@@ -21,6 +21,7 @@ import UploadPhotoScreen from './Screens/Author/UploadPhotoScreen';
 import UploadPhotoPreview from './Screens/Author/UploadReviewScreen';
 import SetLocationScreen from './Screens/Author/SetLocationScreen';
 import SignUpSucessfullyNotificationScreen from './Screens/Author/SignUpSucessfullyNotificationScreen';
+import ForgetPasswordScreen from './Screens/Author/ViaMethodScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,7 +29,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SignUpProcessScreen">
+      <Stack.Navigator initialRouteName="OnboardingIntroduce">
         <Stack.Screen name="OnboardingIntroduce" component={OnboardingIntroduce} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext1" component={OnboardingIntroduceNext1} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext2" component={OnboardingIntroduceNext2} options={{ headerShown: false }} />
@@ -39,6 +40,7 @@ export default function App() {
         <Stack.Screen name="UploadPhotoPreview" component={UploadPhotoPreview} options={{ headerShown: false }} />
         <Stack.Screen name="SetLocationScreen" component={SetLocationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="SignUpSucessfullyScreen" component={SignUpSucessfullyNotificationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgetPasswordScreen" component={ForgetPasswordScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
