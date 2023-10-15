@@ -1,10 +1,13 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 const NotificationScreen = () =>{
+    const handleGoBack = () => {
+        navigation.goBack();
+      };
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
-                <TouchableOpacity style={styles.goback}>
+                <TouchableOpacity style={styles.goback} onPress={handleGoBack}>
                     <Image source={require('../../assets/Notification/Group.png')}></Image>
                 </TouchableOpacity>
                 <View style={styles.viewNotification}>
