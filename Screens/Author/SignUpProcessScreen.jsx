@@ -3,8 +3,8 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Ima
 import { useNavigation } from '@react-navigation/native';
 const SignUpProcessScreen   = ()=>{
     const navigation = useNavigation();
-    const handleSignUp = () => {
-        navigation.navigate('SignUp'); 
+    const handleNext = () => {
+        navigation.navigate('UploadPhotoScreen'); 
       };
     return(
         <ImageBackground  source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -32,9 +32,9 @@ const SignUpProcessScreen   = ()=>{
             </View>
             <View style={styles.viewNext} >
                 <TouchableOpacity style={styles.buttonNext}>
-                    <Text style={styles.textNext}>Next</Text>
+                    <Text style={styles.textNext} onPress={handleNext}>Next</Text>
                 </TouchableOpacity>
-                </View>
+            </View>
         </ImageBackground>
     )
 }
