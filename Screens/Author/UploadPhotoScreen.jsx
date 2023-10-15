@@ -6,6 +6,9 @@ const UploadPhotoScreen  = ()=>{
     const handleGoBack = () => {
         navigation.goBack();
       };
+    const handleNext = () => {
+        navigation.goBack();
+      };
     return(
         <ImageBackground  source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <View style={styles.viewGpBack} >
