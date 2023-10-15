@@ -20,6 +20,7 @@ import SignUpProcessScreen from './Screens/Author/SignUpProcessScreen';
 import UploadPhotoScreen from './Screens/Author/UploadPhotoScreen';
 import UploadPhotoPreview from './Screens/Author/UploadReviewScreen';
 import SetLocationScreen from './Screens/Author/SetLocationScreen';
+import SignUpSucessfullyNotificationScreen from './Screens/Author/SignUpSucessfullyNotificationScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -37,6 +38,7 @@ export default function App() {
         <Stack.Screen name="UploadPhotoScreen" component={UploadPhotoScreen} options={{ headerShown: false }} />
         <Stack.Screen name="UploadPhotoPreview" component={UploadPhotoPreview} options={{ headerShown: false }} />
         <Stack.Screen name="SetLocationScreen" component={SetLocationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUpSucessfullyScreen" component={SignUpSucessfullyNotificationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>

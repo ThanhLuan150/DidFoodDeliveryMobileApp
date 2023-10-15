@@ -2,12 +2,12 @@ import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const SetLocationScreen  = ()=>{
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+  const handleNext = () => {
+      navigation.navigate('SignUpSucessfullyScreen'); 
+    };
     const handleGoBack = () => {
         navigation.goBack();
-      };
-    const handleNext = () => {
-        navigation.navigate('');
       };
     return(
         <ImageBackground  source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
