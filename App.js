@@ -26,6 +26,7 @@ import VerifycationCodeScreen from './Screens/Author/VerifycationCodeScreen';
 import PasswordEditSuccesfullyScreen from './Screens/Author/PasswordEditSuccessfullyScreen';
 import PasswordSucessfullyScreen from './Screens/Author/LoginSucessfully';
 import VoucherPromotion from './Screens/Vouchers/VoucherPromotionSCreen';
+import OrderDetailScreen from './Screens/Orders/OrderDetail';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,7 +34,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="VoucherPromotion">
+      <Stack.Navigator initialRouteName="OrderDetail">
         <Stack.Screen name="OnboardingIntroduce" component={OnboardingIntroduce} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext1" component={OnboardingIntroduceNext1} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext2" component={OnboardingIntroduceNext2} options={{ headerShown: false }} />
@@ -49,6 +50,7 @@ export default function App() {
         <Stack.Screen name="PasswordEditSuccesfullyScreen" component={PasswordEditSuccesfullyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="PasswordSucessfullyScreen" component={PasswordSucessfullyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="VoucherPromotion" component={VoucherPromotion} options={{ headerShown: false }} />
+        <Stack.Screen name="OrderDetail" component={OrderDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
