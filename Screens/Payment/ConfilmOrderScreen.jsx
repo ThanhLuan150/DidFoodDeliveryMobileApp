@@ -1,6 +1,7 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import EditLocationScreen from "./EditLocationScreen";
 const ConfirmOrderScreen = () =>{
     const navigation = useNavigation();
     const hadleGoBack = () =>{
@@ -8,6 +9,9 @@ const ConfirmOrderScreen = () =>{
     }
     const hadleEditPayment = () =>{
         navigation.navigate('EditPaymentScreen')
+    }
+    const handleEditLocation =() =>{
+        navigation.navigate('EditLocationScreen')
     }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -22,7 +26,7 @@ const ConfirmOrderScreen = () =>{
                     <View style={styles.viewPaymentItem}>
                         <View style={styles.viewPaymentContent}>
                             <Text style={styles.textDeliver}>Deliver To</Text>
-                            <Text style={styles.textEdit} >Edit</Text>
+                            <Text style={styles.textEdit} onPress={handleEditLocation} >Edit</Text>
                         </View>
                         <View style={styles.viewAddress}>
                             <Image style={{ marginLeft:13, marginTop:6 }} source={require('../../assets/Payments/IconLocation.png')}></Image>
