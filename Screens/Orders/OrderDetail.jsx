@@ -1,4 +1,5 @@
 import React from "react";
+import Swipeout from 'react-native-swipeout';
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 const OrderDetailScreen = () =>{
     return(
@@ -11,7 +12,22 @@ const OrderDetailScreen = () =>{
                     <Text style={ styles.textOrderDetail}>Order Detail</Text>
                 </View> 
                 <View style={styles.viewOrderDetailItem}>
-                    <View style={styles.viewDetailItem}>
+                    <Swipeout
+                        right={[
+                        {
+                            component: (
+                                <View style={styles.viewImage}>
+                                    <TouchableOpacity>
+                                        <Image source={require('../../assets/OrderDetails/Icontrash.png')} style={styles.deleteImage} />
+                                    </TouchableOpacity>
+                                </View>
+                             ),
+                        },
+                        ]}
+                        friction={0.3} // Giảm ma sát lướt nó mượt hơn.
+                        style={styles.Swipeout}
+                    >
+                        <View style={styles.viewDetailItem}>
                         <View style={styles.Image}>
                             <Image source={require('../../assets/OrderDetails/MenuPhoto.png')}></Image>
                         </View>
@@ -22,61 +38,94 @@ const OrderDetailScreen = () =>{
                         </View>
                         <View style={styles.viewNumber}>
                             <TouchableOpacity style={styles.button}>
-                                <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
+                            <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
                             </TouchableOpacity>
                             <TextInput
-                                style={styles.TextInput}
-                                keyboardType="numeric"
+                            style={styles.TextInput}
+                            keyboardType="numeric"
                             />
-                             <TouchableOpacity style={styles.button}>
-                                <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={styles.viewDetailItem}>
-                        <View style={styles.Image}>
-                            <Image source={require('../../assets/OrderDetails/MenuPhoto.png')}></Image>
-                        </View>
-                        <View style={styles.viewOrderText}>
-                            <Text style={styles.textSpacy}>Spacy fresh crab</Text>
-                            <Text style={styles.textWaroenk}>Waroenk kita</Text>
-                            <Text style={styles.text$}>$35</Text>
-                        </View>
-                        <View style={styles.viewNumber}>
                             <TouchableOpacity style={styles.button}>
-                                <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
+                            <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
                             </TouchableOpacity>
-                            <TextInput
+                        </View>
+                        </View>
+                    </Swipeout>
+                    <Swipeout
+                        right={[
+                        {
+                            component: (
+                                <View style={styles.viewImage}>
+                                    <TouchableOpacity>
+                                        <Image source={require('../../assets/OrderDetails/Icontrash.png')} style={styles.deleteImage} />
+                                    </TouchableOpacity>
+                                </View>
+                             ),
+                        },
+                        ]}
+                        friction={0.3} 
+                        style={styles.Swipeout}
+                    >
+                        <View style={styles.viewDetailItem}>
+                            <View style={styles.Image}>
+                                <Image source={require('../../assets/OrderDetails/MenuPhoto1.png')}></Image>
+                            </View>
+                            <View style={styles.viewOrderText}>
+                                <Text style={styles.textSpacy}>Spacy fresh crab</Text>
+                                <Text style={styles.textWaroenk}>Waroenk kita</Text>
+                                <Text style={styles.text$}>$35</Text>
+                            </View>
+                            <View style={styles.viewNumber}>
+                                <TouchableOpacity style={styles.button}>
+                                <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
+                                </TouchableOpacity>
+                                <TextInput
                                 style={styles.TextInput}
                                 keyboardType="numeric"
-                            />
-                             <TouchableOpacity style={styles.button}>
+                                />
+                                <TouchableOpacity style={styles.button}>
                                 <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
-                            </TouchableOpacity>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.viewDetailItem}>
-                        <View style={styles.Image}>
-                            <Image source={require('../../assets/OrderDetails/MenuPhoto.png')}></Image>
-                        </View>
-                        <View style={styles.viewOrderText}>
-                            <Text style={styles.textSpacy}>Spacy fresh crab</Text>
-                            <Text style={styles.textWaroenk}>Waroenk kita</Text>
-                            <Text style={styles.text$}>$35</Text>
-                        </View>
-                        <View style={styles.viewNumber}>
-                            <TouchableOpacity style={styles.button}>
+                    </Swipeout>
+                    <Swipeout
+                        right={[
+                        {
+                            component: (
+                                <View style={styles.viewImage}>
+                                    <TouchableOpacity>
+                                        <Image source={require('../../assets/OrderDetails/Icontrash.png')} style={styles.deleteImage} />
+                                    </TouchableOpacity>
+                                </View>
+                             ),
+                        },
+                        ]}
+                        friction={0.3}
+                        style={styles.Swipeout} 
+                    >
+                        <View style={styles.viewDetailItem}>
+                            <View style={styles.Image}>
+                                <Image source={require('../../assets/OrderDetails/MenuPhoto2.png')}></Image>
+                            </View>
+                            <View style={styles.viewOrderText}>
+                                <Text style={styles.textSpacy}>Spacy fresh crab</Text>
+                                <Text style={styles.textWaroenk}>Waroenk kita</Text>
+                                <Text style={styles.text$}>$35</Text>
+                            </View>
+                            <View style={styles.viewNumber}>
+                                <TouchableOpacity style={styles.button}>
                                 <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
-                            </TouchableOpacity>
-                            <TextInput
+                                </TouchableOpacity>
+                                <TextInput
                                 style={styles.TextInput}
                                 keyboardType="numeric"
-                            />
-                             <TouchableOpacity style={styles.button}>
+                                />
+                                <TouchableOpacity style={styles.button}>
                                 <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
-                            </TouchableOpacity>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
+                    </Swipeout>
                 </View>
                 <View style={styles.viewBillOrder}>
                     <View style={styles.viewBill}>
@@ -134,6 +183,17 @@ const styles =StyleSheet.create({
         paddingTop:20,
         flexDirection:'column',
         gap:20
+    },
+    Swipeout:{
+        borderRadius:15,
+        backgroundColor:'#6B50F6',
+    },
+    viewImage:{
+        backgroundColor:'#6B50F6',
+        height:200,
+        paddingTop:38,
+        paddingRight:38,
+        paddingLeft:18
     },
     viewDetailItem:{
         flexDirection:'row',
