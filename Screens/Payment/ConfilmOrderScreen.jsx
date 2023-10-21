@@ -1,7 +1,6 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import EditLocationScreen from "./EditLocationScreen";
 const ConfirmOrderScreen = () =>{
     const navigation = useNavigation();
     const hadleGoBack = () =>{
@@ -12,6 +11,9 @@ const ConfirmOrderScreen = () =>{
     }
     const handleEditLocation =() =>{
         navigation.navigate('EditLocationScreen')
+    }
+    const handleYourOrder =() =>{
+        navigation.navigate('YourOrderScreen')
     }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -66,7 +68,7 @@ const ConfirmOrderScreen = () =>{
                             <Text style={styles.textTotal}>150$</Text>
                         </View>
                         <View style={styles.viewOrder}>
-                            <TouchableOpacity style={styles.buttonOrder} >
+                            <TouchableOpacity style={styles.buttonOrder} onPress={handleYourOrder} >
                                 <Text style={styles.textPlaceMyOrder}>Place My Order</Text>
                             </TouchableOpacity>
                         </View>
