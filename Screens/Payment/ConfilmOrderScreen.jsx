@@ -6,6 +6,9 @@ const ConfirmOrderScreen = () =>{
     const hadleGoBack = () =>{
         navigation.goBack();
     }
+    const hadleEditPayment = () =>{
+        navigation.navigate('EditPaymentScreen')
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -19,7 +22,7 @@ const ConfirmOrderScreen = () =>{
                     <View style={styles.viewPaymentItem}>
                         <View style={styles.viewPaymentContent}>
                             <Text style={styles.textDeliver}>Deliver To</Text>
-                            <Text style={styles.textEdit}>Edit</Text>
+                            <Text style={styles.textEdit} >Edit</Text>
                         </View>
                         <View style={styles.viewAddress}>
                             <Image style={{ marginLeft:13, marginTop:6 }} source={require('../../assets/Payments/IconLocation.png')}></Image>
@@ -32,7 +35,7 @@ const ConfirmOrderScreen = () =>{
                     <View style={styles.viewPaymentItem}>
                         <View style={styles.viewPaymentContent}>
                             <Text style={styles.textDeliver}>Payment Method</Text>
-                            <Text style={styles.textEdit}>Edit</Text>
+                            <Text style={styles.textEdit}  onPress={hadleEditPayment}>Edit</Text>
                         </View>
                         <View style={styles.viewAddress1}>
                             <Image source={require('../../assets/Payments/paypalLogo.png')}></Image>
