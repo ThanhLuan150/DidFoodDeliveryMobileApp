@@ -1,7 +1,12 @@
 import React from "react";
 import Swipeout from 'react-native-swipeout';
+import { useNavigation } from '@react-navigation/native';
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 const OrderDetailScreen = () =>{
+    const navigation = useNavigation();
+    const handleConfirmOrder = () =>{
+        navigation.navigate('ConfirmOrderScreen')
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -149,7 +154,7 @@ const OrderDetailScreen = () =>{
                             <Text style={styles.textTotal}>150$</Text>
                         </View>
                         <View style={styles.viewOrder}>
-                            <TouchableOpacity style={styles.buttonOrder}>
+                            <TouchableOpacity style={styles.buttonOrder} onPress={handleConfirmOrder}>
                                 <Text style={styles.textPlaceMyOrder}>Place My Order</Text>
                             </TouchableOpacity>
                         </View>

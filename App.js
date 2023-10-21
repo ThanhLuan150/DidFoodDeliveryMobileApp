@@ -27,6 +27,8 @@ import PasswordEditSuccesfullyScreen from './Screens/Author/PasswordEditSuccessf
 import PasswordSucessfullyScreen from './Screens/Author/LoginSucessfully';
 import VoucherPromotion from './Screens/Vouchers/VoucherPromotionSCreen';
 import OrderDetailScreen from './Screens/Orders/OrderDetail';
+import ConfilmOrderScreen from './Screens/Payment/ConfilmOrderScreen';
+import ConfirmOrderScreen from './Screens/Payment/ConfilmOrderScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,6 +53,7 @@ export default function App() {
         <Stack.Screen name="PasswordSucessfullyScreen" component={PasswordSucessfullyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="VoucherPromotion" component={VoucherPromotion} options={{ headerShown: false }} />
         <Stack.Screen name="OrderDetail" component={OrderDetailScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ConfirmOrderScreen" component={ConfirmOrderScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
