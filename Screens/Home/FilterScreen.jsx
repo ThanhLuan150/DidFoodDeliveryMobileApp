@@ -125,9 +125,6 @@ const styles =StyleSheet.create({
         fontWeight:'400'
       },
       viewListType:{
-
-      },
-      viewListType:{
         paddingLeft: 25,
         flexDirection: 'row',
         flexWrap: 'wrap', // Cho phép các mục tự động xuống hàng khi không đủ không gian

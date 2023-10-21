@@ -91,7 +91,11 @@ const YourOrderScreen = () =>{
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View></View>
+                    <View>
+                        <TouchableOpacity>
+                            <Text>Check out</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ScrollView>
         </ImageBackground>
