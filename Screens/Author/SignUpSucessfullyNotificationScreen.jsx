@@ -3,8 +3,8 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Ima
 import { useNavigation } from '@react-navigation/native';
 const SignUpSucessfullyNotificationScreen = () =>{
     const navigation = useNavigation();
-    const handleNext = () => {
-        navigation.navigate('Home'); 
+    const handleSignIn = () => {
+        navigation.navigate('SignIn'); 
       };
     return(
         <ImageBackground source={require('../../assets/Signup_Signin/SignupNotification.png')}style={styles.imageBackground}>
@@ -16,7 +16,7 @@ const SignUpSucessfullyNotificationScreen = () =>{
                 <Text style={styles.textYourProfile}>Your Profile Is Ready To Use</Text>
             </View>
             <View style={styles.viewNext} >
-                <TouchableOpacity style={styles.buttonNext} onPress={handleNext}>
+                <TouchableOpacity style={styles.buttonNext} onPress={handleSignIn}>
                     <Text style={styles.textNext} >Try Order</Text>
                 </TouchableOpacity>
             </View>

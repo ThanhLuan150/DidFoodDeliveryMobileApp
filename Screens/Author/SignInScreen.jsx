@@ -6,8 +6,8 @@ const SignInScreen  = ()=>{
     const handleSignUp = () => {
         navigation.navigate('SignUp'); 
       };
-    const handleSignUpProcess = () => {
-        navigation.navigate('SignUpProcessScreen'); 
+    const handleHome = () => {
+        navigation.navigate('Home'); 
       };
     const handleForgetPassword = () =>{
       navigation.navigate('ForgetPasswordScreen')
@@ -48,7 +48,7 @@ const SignInScreen  = ()=>{
                     <Text style={styles.textFo} onPress={handleSignUp}>Sign Up</Text>
                 </View>
                 <View style={styles.viewNext} >
-                    <TouchableOpacity style={styles.buttonNext} onPress={handleSignUpProcess}>
+                    <TouchableOpacity style={styles.buttonNext} onPress={handleHome}>
                         <Text style={styles.textNext}>Login</Text>
                     </TouchableOpacity>
                 </View>

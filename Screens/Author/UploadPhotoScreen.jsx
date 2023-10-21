@@ -73,8 +73,9 @@ const styles= StyleSheet.create({
       ,viewuploadimage:{
         paddingTop:20,
         flexDirection:'column',
-        gap:20
-
+        gap:20,
+        paddingLeft:20,
+        paddingRight:20
       }
       ,viewFromGalary:{
         width:'100%',
@@ -90,6 +91,7 @@ const styles= StyleSheet.create({
         alignItems:'center',
         paddingTop:23,
         paddingBottom:22,
+        borderRadius:15
       },
       textFrom:{
         color:'#22242E',

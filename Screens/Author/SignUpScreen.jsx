@@ -5,9 +5,9 @@ const SignUpScreen  = ()=>{
     const handleLoginScreen = () => {
         navigation.navigate('SignIn'); 
       };
-      const handleLoginScreen1 = () => {
-        navigation.navigate('SignIn'); 
-      };
+    const handlePSignUpProcessScreen = () =>{
+      navigation.navigate('SignUpProcessScreen')
+    }
     return(
         <ImageBackground source={require('../../assets/Signup_Signin/Signin.png')} style={styles.imageBackground} >
             <View style={styles.viewTestSign}>
@@ -33,10 +33,10 @@ const SignUpScreen  = ()=>{
                 <Text style ={styles.textKeep}>Email Me About Special Pricing</Text>
             </View>
             <View style={styles.viewButton}>
-                <TouchableOpacity style={styles.button} onPress={handleLoginScreen}>
+                <TouchableOpacity style={styles.button} onPress={handlePSignUpProcessScreen}>
                     <Text style={styles.textbutton}>Create Account</Text>
                 </TouchableOpacity>
-                <Text style={styles.textAdready} onPress={handleLoginScreen1}>Adready have an account</Text>
+                <Text style={styles.textAdready} onPress={handleLoginScreen}>Adready have an account</Text>
             </View>
         </ImageBackground>
     )
