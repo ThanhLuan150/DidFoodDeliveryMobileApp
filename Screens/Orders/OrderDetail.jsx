@@ -33,27 +33,27 @@ const OrderDetailScreen = () =>{
                         style={styles.Swipeout}
                     >
                         <View style={styles.viewDetailItem}>
-                        <View style={styles.Image}>
-                            <Image source={require('../../assets/OrderDetails/MenuPhoto.png')}></Image>
-                        </View>
-                        <View style={styles.viewOrderText}>
-                            <Text style={styles.textSpacy}>Spacy fresh crab</Text>
-                            <Text style={styles.textWaroenk}>Waroenk kita</Text>
-                            <Text style={styles.text$}>$35</Text>
-                        </View>
-                        <View style={styles.viewNumber}>
-                            <TouchableOpacity style={styles.button}>
-                            <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
-                            </TouchableOpacity>
-                            <TextInput
-                            style={styles.TextInput}
-                            keyboardType="numeric"
-                            value="2"
-                            />
-                            <TouchableOpacity style={styles.button}>
-                            <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
-                            </TouchableOpacity>
-                        </View>
+                            <View style={styles.Image}>
+                                <Image source={require('../../assets/OrderDetails/MenuPhoto.png')}></Image>
+                            </View>
+                            <View style={styles.viewOrderText}>
+                                <Text style={styles.textSpacy}>Spacy fresh crab</Text>
+                                <Text style={styles.textWaroenk}>Waroenk kita</Text>
+                                <Text style={styles.text$}>$35</Text>
+                            </View>
+                            <View style={styles.viewNumber}>
+                                <TouchableOpacity style={styles.button}>
+                                <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
+                                </TouchableOpacity>
+                                <TextInput
+                                style={styles.TextInput}
+                                keyboardType="numeric"
+                                value="2"
+                                />
+                                <TouchableOpacity style={styles.button}>
+                                <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </Swipeout>
                     <Swipeout

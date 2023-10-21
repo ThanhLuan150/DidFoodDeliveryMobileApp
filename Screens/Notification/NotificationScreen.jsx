@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 const NotificationScreen = () =>{
+    const navigation = useNavigation();
     const handleGoBack = () => {
         navigation.goBack();
       };

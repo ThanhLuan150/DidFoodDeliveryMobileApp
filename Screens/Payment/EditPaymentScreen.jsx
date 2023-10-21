@@ -18,19 +18,19 @@ import { useNavigation } from '@react-navigation/native';const EditPaymentScreen
                     <View style={styles.viewPaymentItem}>
                         <View style={styles.viewImageText}>
                             <Image source={require('../../assets/Payments/paypalLogo.png')}></Image>
-                            <Text>0787628654</Text>
+                            <Text style={styles.phone}>0787628654</Text>
                         </View>
                     </View>
-                    <View style={styles.viewPaymentItem}>
+                    <View style={styles.viewPaymentItemDart}>
                         <View style={styles.viewImageText}>
                             <Image style={{ height:23 }} source={require('../../assets/Payments/visa.png')}></Image>
-                            <Text>0787628654</Text>
+                            <Text style={styles.phoneDart}>0787628654</Text>
                         </View>
                     </View>
-                    <View style={styles.viewPaymentItem}>
+                    <View style={styles.viewPaymentItemDart}>
                         <View style={styles.viewImageText}>
                             <Image source={require('../../assets/Payments/Payoneerlogo.png')}></Image>
-                            <Text>0787628654</Text>
+                            <Text style={styles.phoneDart}>0787628654</Text>
                         </View>
                     </View>
                     <View></View>
@@ -82,7 +82,25 @@ const styles =StyleSheet.create({
         paddingLeft:20,
         paddingRight:20,
         paddingTop:20,
-    paddingBottom:20
+        paddingBottom:20
+    },
+    phone:{
+        color:'#22242E',
+        fontSize:14,
+        fontWeight:'400',
+    },
+    viewPaymentItemDart:{
+        backgroundColor:'#F6F6F6',
+        shadowOpacity: 1,
+        shadowRadius: 5 ,
+        paddingTop:18,
+        paddingBottom:20,
+        borderRadius:22,
+    },
+    phoneDart:{
+        color:'gray',
+        fontSize:14,
+        fontWeight:'400',
     }
 
 })
