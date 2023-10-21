@@ -43,6 +43,7 @@ const OrderDetailScreen = () =>{
                             <TextInput
                             style={styles.TextInput}
                             keyboardType="numeric"
+                            value="2"
                             />
                             <TouchableOpacity style={styles.button}>
                             <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
@@ -81,6 +82,7 @@ const OrderDetailScreen = () =>{
                                 <TextInput
                                 style={styles.TextInput}
                                 keyboardType="numeric"
+                                value="1"
                                 />
                                 <TouchableOpacity style={styles.button}>
                                 <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
@@ -119,6 +121,7 @@ const OrderDetailScreen = () =>{
                                 <TextInput
                                 style={styles.TextInput}
                                 keyboardType="numeric"
+                                value="1"
                                 />
                                 <TouchableOpacity style={styles.button}>
                                 <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
