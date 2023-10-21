@@ -6,6 +6,9 @@ const EditLocationScreen = () =>{
     const hadleGoBack = () =>{
         navigation.goBack();
     }
+    const handleSetLocation = () =>{
+        navigation.navigate('SetLocation')
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -35,7 +38,7 @@ const EditLocationScreen = () =>{
                                 <Text style={styles.textLocation}> Maine 98380</Text>
                             </View>
                         </View>
-                        <Text style={styles.textsetLocation}>set Location</Text>
+                        <Text style={styles.textsetLocation} onPress={handleSetLocation} >set Location</Text>
                     </View>
                     <View></View>
                 </View>

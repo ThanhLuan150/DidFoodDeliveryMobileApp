@@ -32,6 +32,7 @@ import ConfirmOrderScreen from './Screens/Payment/ConfilmOrderScreen';
 import EditPaymentScreen from './Screens/Payment/EditPaymentScreen';
 import EditLocationScreen from './Screens/Payment/EditLocationScreen';
 import YourOrderScreen from './Screens/Payment/YourOrderScreen';
+import SetLocation from './Screens/Payment/SetLocation';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,6 +61,7 @@ export default function App() {
         <Stack.Screen name="EditPaymentScreen" component={EditPaymentScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EditLocationScreen" component={EditLocationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="YourOrderScreen" component={YourOrderScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SetLocation" component={SetLocation} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
