@@ -2,6 +2,10 @@ import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const FilterScreen = () =>{
+  const navigation = useNavigation();
+  const handleNotification = () =>{
+    navigation.navigate('NotificationScreen')
+  }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
         <ScrollView>
@@ -10,7 +14,9 @@ const FilterScreen = () =>{
                     <Text style={styles.textFine}>Fine Your</Text>
                     <Text style={styles.textFine}>Favorite Food</Text>
                 </View>
-                <Image  source={require('../../assets/Home/Notification.png')}></Image>
+                <TouchableOpacity onPress={handleNotification}>
+                    <Image  source={require('../../assets/Home/Notification.png')}></Image>
+                  </TouchableOpacity>
             </View>
             <View style={styles.viewSearch}>
                 <View style={styles.viewsearch}>
@@ -117,9 +123,6 @@ const styles =StyleSheet.create({
         fontSize:15,
         lineHeight:19.65,
         fontWeight:'400'
-      },
-      viewListType:{
-
       },
       viewListType:{
         paddingLeft: 25,

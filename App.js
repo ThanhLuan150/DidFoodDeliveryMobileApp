@@ -16,6 +16,23 @@ import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
 import ExploreMenu from './Screens/Home/ExploreMenuScreen';
 import FilterScreen from './Screens/Home/FilterScreen';
 import NotificationScreen from './Screens/Notification/NotificationScreen';
+import SignUpProcessScreen from './Screens/Author/SignUpProcessScreen';
+import UploadPhotoScreen from './Screens/Author/UploadPhotoScreen';
+import UploadPhotoPreview from './Screens/Author/UploadReviewScreen';
+import SetLocationScreen from './Screens/Author/SetLocationScreen';
+import SignUpSucessfullyNotificationScreen from './Screens/Author/SignUpSucessfullyNotificationScreen';
+import ForgetPasswordScreen from './Screens/Author/ViaMethodScreen';
+import VerifycationCodeScreen from './Screens/Author/VerifycationCodeScreen';
+import PasswordEditSuccesfullyScreen from './Screens/Author/PasswordEditSuccessfullyScreen';
+import PasswordSucessfullyScreen from './Screens/Author/LoginSucessfully';
+import VoucherPromotion from './Screens/Vouchers/VoucherPromotionSCreen';
+import OrderDetailScreen from './Screens/Orders/OrderDetail';
+import ConfilmOrderScreen from './Screens/Payment/ConfilmOrderScreen';
+import ConfirmOrderScreen from './Screens/Payment/ConfilmOrderScreen';
+import EditPaymentScreen from './Screens/Payment/EditPaymentScreen';
+import EditLocationScreen from './Screens/Payment/EditLocationScreen';
+import YourOrderScreen from './Screens/Payment/YourOrderScreen';
+import SetLocation from './Screens/Payment/SetLocation';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,12 +40,28 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="OnboardingIntroduce">
         <Stack.Screen name="OnboardingIntroduce" component={OnboardingIntroduce} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext1" component={OnboardingIntroduceNext1} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext2" component={OnboardingIntroduceNext2} options={{ headerShown: false }} />
         <Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
         <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUpProcessScreen" component={SignUpProcessScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="UploadPhotoScreen" component={UploadPhotoScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="UploadPhotoPreview" component={UploadPhotoPreview} options={{ headerShown: false }} />
+        <Stack.Screen name="SetLocationScreen" component={SetLocationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUpSucessfullyScreen" component={SignUpSucessfullyNotificationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgetPasswordScreen" component={ForgetPasswordScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="VerifycationCodeScreen" component={VerifycationCodeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PasswordEditSuccesfullyScreen" component={PasswordEditSuccesfullyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PasswordSucessfullyScreen" component={PasswordSucessfullyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="VoucherPromotion" component={VoucherPromotion} options={{ headerShown: false }} />
+        <Stack.Screen name="OrderDetail" component={OrderDetailScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ConfirmOrderScreen" component={ConfirmOrderScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="EditPaymentScreen" component={EditPaymentScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="EditLocationScreen" component={EditLocationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="YourOrderScreen" component={YourOrderScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SetLocation" component={SetLocation} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
@@ -46,7 +79,7 @@ export default function App() {
                 tabBarLabel: 'Profile',
                 headerShown: false,
               }} />
-              <Tab.Screen name="Cart" component={CartScreen} options={{
+              <Tab.Screen name="Cart" component={OrderDetailScreen} options={{
                 tabBarIcon: () => (
                   <Image source={require('./assets/Home/Buy.png')} />
                 ),
