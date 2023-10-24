@@ -3,7 +3,7 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Im
 import { useNavigation } from '@react-navigation/native';
 const DetailProduct = ()=>{
     return(
-        <View>
+        <View style={styles.container}>
             <Image style={styles.image} source={require('../../assets/DetailProduct/PhotoRestaurant.png')}></Image>
             <ScrollView>
                 <View style={styles.viewScroll}>
@@ -24,25 +24,110 @@ const DetailProduct = ()=>{
                 <View style={styles.viewFeedback}>
                     <View style={styles.viewLoccation}>
                         <Image source={require('../../assets/DetailProduct/Iconmappin.png')}></Image>
-                        <Text>19 km</Text>
+                        <Text style={styles.textkm}>19 km</Text>
                     </View>
                     <View style={styles.viewLoccation}>
                         <Image source={require('../../assets/DetailProduct/IconStar.png')}></Image>
-                        <Text>4.8 Rating</Text>
+                        <Text style={styles.textkm} >4.8 Rating</Text>
                     </View>
                 </View>
                 <View style={styles.viewDescription}>
                     <Text style={styles.textDescription}>Most whole Alaskan Red King Crabs get broken down into legs, claws, and lump meat. We offer all of these options as well in our online shop, but there is nothing like getting the whole . . . .</Text>
                 </View>
                 <View style={styles.viewPopularMenu}>
-                    <Text style={styles.textPopular}>Popular Menu</Text>
+                    <Text style={styles.textPopularMenu}>Popular Menu</Text>
                     <Text style={styles.textViewMore}>View more</Text>
+                </View>
+                <View style ={styles.viewListProduct}>
+                    <View style={styles.viewItemProduct}>
+                        <View style={styles.viewImage}>
+                            <Image source={require('../../assets/DetailProduct/image32.png')}></Image>
+                        </View>
+                        <Text style={styles.textProduct}>Spacy fresh crab</Text>
+                        <Text style={styles.textPrice}>12 $</Text>
+                    </View>
+                    <View style={styles.viewItemProduct}>
+                        <View style={styles.viewImage}>
+                            <Image source={require('../../assets/DetailProduct/image34.png')}></Image>
+                        </View>
+                        <Text style={styles.textProduct}>Spacy fresh crab</Text>
+                        <Text style={styles.textPrice}>12 $</Text>
+                    </View>
+                </View>
+                <View style={styles.viewPopularMenu}>
+                    <Text style={styles.textPopularMenu}>Testimonials</Text>
+                </View>
+                <View style={styles.viewTes}>
+                    <View style={styles.viewitemTes}>
+                        <View style={styles.imagee}>
+                            <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
+                        </View>
+                        <View>
+                            <View style={styles.viewNameDate}>
+                                <View>
+                                    <Text style={styles.textnameI}>Dianne Russell</Text>
+                                    <Text style={styles.textDateI}>12 April 2021</Text>
+                                </View>
+                                <TouchableOpacity style={styles.buttonRatting}>
+                                    <Image source={require('../../assets/DetailProduct/IconStar1.png')}></Image>
+                                    <Text style={styles.textrating}>5</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.viewReview}>
+                                <Text style={styles.textReview}>This Is great, So delicious!.</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.viewitemTes}>
+                        <View style={styles.imagee}>
+                            <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
+                        </View>
+                        <View>
+                            <View style={styles.viewNameDate}>
+                                <View>
+                                    <Text style={styles.textnameI}>Dianne Russell</Text>
+                                    <Text style={styles.textDateI}>12 April 2021</Text>
+                                </View>
+                                <TouchableOpacity style={styles.buttonRatting}>
+                                    <Image source={require('../../assets/DetailProduct/IconStar1.png')}></Image>
+                                    <Text style={styles.textrating}>5</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.viewReview}>
+                                <Text style={styles.textReview}>This Is great, So delicious!.</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.viewitemTes}>
+                        <View style={styles.imagee}>
+                            <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
+                        </View>
+                        <View>
+                            <View style={styles.viewNameDate}>
+                                <View>
+                                    <Text style={styles.textnameI}>Dianne Russell</Text>
+                                    <Text style={styles.textDateI}>12 April 2021</Text>
+                                </View>
+                                <TouchableOpacity style={styles.buttonRatting}>
+                                    <Image source={require('../../assets/DetailProduct/IconStar1.png')}></Image>
+                                    <Text style={styles.textrating}>5</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.viewReview}>
+                                <Text style={styles.textReview}>This Is great, So delicious!.</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View></View>
                 </View>
             </ScrollView>
         </View>
     )
 }
 const styles = StyleSheet.create({
+    container:{
+        flex:1,
+      },
     image:{
         width: '100%'
     },
@@ -94,7 +179,142 @@ const styles = StyleSheet.create({
     },
     viewFeedback:{
         flexDirection:'row',
+        gap:20,
+        paddingLeft:30,
+        paddingTop:20,
+        paddingBottom:20
+    },
+    viewLoccation:{
+        flexDirection:'row',
+        gap:10
+    },
+    textkm:{
+        color:'gray',
+        fontSize:14,
+        fontWeight:'400'
+    },
+    viewDescription:{
+        paddingLeft:33,
+        paddingRight:30,
+        paddingBottom:20
+    },
+    textDescription:{
+        color:'#22242E',
+        fontSize:12.5,
+        lineHeight:21.66
+    },
+    viewPopularMenu:{
+        paddingLeft:33,
+        paddingRight:32,
+        flexDirection:'row',
+        justifyContent:'space-between'
+    },
+    textPopularMenu:{
+        color:'#22242E',
+        fontSize:15,
+        fontWeight:'600',
+        lineHeight:19.65
+    },
+    textViewMore:{
+        color:'#6B50F6',
+        fontSize:12,
+        fontWeight:'400',
+        lineHeight:15.72
+    },
+    viewListProduct:{
+        paddingTop:20,
+        paddingLeft:20,
+        paddingRight:20,
+        paddingBottom:20,
+        flexDirection:'row',
         gap:20
+    },
+    viewItemProduct:{
+        backgroundColor:'white',
+        elevation: 2, 
+        shadowOpacity: 1,
+        shadowRadius: 5 ,
+        borderRadius:22
+    },
+    viewImage:{
+        paddingTop:25,
+        paddingLeft:38,
+        paddingRight:38,
+        paddingBottom:16
+    },
+    textProduct:{
+        color:'#22242E',
+        fontSize:15,
+        fontWeight:'500',
+        paddingLeft:14,
+        paddingRight:14,
+        lineHeight:19.65,
+    },
+    textPrice:{
+        fontSize:13,
+        fontWeight:'400',
+        color:'gray',
+        paddingLeft:61,
+        paddingRight:61,
+        paddingBottom:14
+    },
+    viewTes:{
+        paddingTop:20,
+        paddingLeft:20,
+        paddingRight:20,
+        flexDirection:'column',
+        gap:20
+    },
+    viewitemTes:{
+        backgroundColor:'white',
+        elevation: 2, 
+        shadowOpacity: 1,
+        shadowRadius: 5 ,
+        borderRadius:22,
+        paddingLeft:10,
+        paddingTop:10,
+        paddingBottom:19,
+        flexDirection:'row',
+        gap:21
+    },
+    viewNameDate:{
+        flexDirection:'row',
+        gap:59
+    },
+    textnameI:{
+        color:'#22242E',
+        fontSize:15,
+        fontWeight:'600',
+        lineHeight:19.65
+    },
+    textDateI:{
+        color:'gray',
+        fontWeight:'400',
+        fontSize:12
+    },
+    buttonRatting:{
+        backgroundColor:'whitesmoke',
+        paddingTop:9,
+        paddingLeft:10,
+        paddingRight:10,
+        borderRadius:18,
+        flexDirection:'row',
+        gap:5
+    },
+    textrating:{
+        color:'#6B50F6',
+        fontSize:16,
+        fontWeight:'600',
+        marginBottom:8
+    },
+    viewReview: {
+        paddingRight: 28,
+    },
+    textReview: {
+        color: '#22242E',
+        fontSize: 12.5,
+        lineHeight: 21.66,
+        flexWrap: 'wrap', // Cho phép văn bản tự động xuống hàng
     }
 })
 export default DetailProduct;
