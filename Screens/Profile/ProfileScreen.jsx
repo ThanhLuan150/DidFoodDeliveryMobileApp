@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import {StyleSheet,View,Text,ScrollView,Image,TouchableOpacity,} from "react-native";
+import React from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity,ScrollView } from 'react-native';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 const ProfileScreen = () => {
   return (
-    <View style={styles.container}>
-      <Image style={styles.Image}  source={require('../../assets/Profile/PhotoProfile.png')}></Image>
-      <ScrollView style={styles.ScrollView}>
+    <ParallaxScrollView
+      backgroundColor="transparent"
+      contentBackgroundColor="white"
+      parallaxHeaderHeight={300}
+      renderBackground={() => (
+        <Image  style={styles.Image} source={require('../../assets/Profile/PhotoProfile.png')} />
+      )}
+    >
+      <View style={styles.container}>
+        <ScrollView style={styles.ScrollView}>
           <View style={styles.viewScrollView}>
             <TouchableOpacity style={styles.ScrollTool}></TouchableOpacity>
           </View>
@@ -16,13 +24,13 @@ const ProfileScreen = () => {
           <View style={styles.viewNameProfile}>
             <Text style={styles.textNameProfile}>Arash Ranjbaran</Text>
             <TouchableOpacity style={styles.TouchableOpacity}>
-              <Image source={require('../../assets/Profile/EditIcon.png')}></Image>
+              <Image source={require('../../assets/Profile/EditIcon.png')} />
             </TouchableOpacity>
           </View>
           <Text style={styles.textEmail}>awdesign.ar@gmail.com</Text>
           <View style={styles.viewVoucher}>
             <View style={styles.viewVoucherItem}>
-              <Image source={require('../../assets/Profile/VoucherIcon.png')}></Image>
+              <Image source={require('../../assets/Profile/VoucherIcon.png')} />
               <Text style={styles.textVoucher}>You have 3 Voucher</Text>
             </View>
           </View>
@@ -31,62 +39,63 @@ const ProfileScreen = () => {
           </View>
           <View style={styles.viewListFavorite}>
             <View style={styles.viewListItemFavorite}>
-                <Image source={require('../../assets/Profile/PhotoMenu1.png')}></Image>
-                <View style={styles.viewContent}>
-                  <Text style={styles.textFavorite}>Spacy fresh crab</Text>
-                  <Text style={styles.textWaroenk}>Waroenk kita</Text>
-                  <Text style={styles.textPrice}>$ 35</Text>
-                </View>
-                <View style={styles.viewButtonBuyAgain}>
-                  <TouchableOpacity style={styles.ButtonBuyAgain}>
-                    <Text style={styles.textBuyAgain}>Buy Again</Text>
-                  </TouchableOpacity>
-                </View>
+              <Image source={require('../../assets/Profile/PhotoMenu1.png')} />
+              <View style={styles.viewContent}>
+                <Text style={styles.textFavorite}>Spicy fresh crab</Text>
+                <Text style={styles.textWaroenk}>Waroenk kita</Text>
+                <Text style={styles.textPrice}>$ 35</Text>
+              </View>
+              <View style={styles.viewButtonBuyAgain}>
+                <TouchableOpacity style={styles.ButtonBuyAgain}>
+                  <Text style={styles.textBuyAgain}>Buy Again</Text>
+                </TouchableOpacity>
+              </View>
             </View>
             <View style={styles.viewListItemFavorite}>
-                <Image source={require('../../assets/Profile/PhotoMenu2.png')}></Image>
-                <View style={styles.viewContent}>
-                  <Text style={styles.textFavorite}>Spacy fresh crab</Text>
-                  <Text style={styles.textWaroenk}>Waroenk kita</Text>
-                  <Text style={styles.textPrice}>$ 35</Text>
-                </View>
-                <View style={styles.viewButtonBuyAgain}>
-                  <TouchableOpacity style={styles.ButtonBuyAgain}>
-                    <Text style={styles.textBuyAgain}>Buy Again</Text>
-                  </TouchableOpacity>
-                </View>
+              <Image source={require('../../assets/Profile/PhotoMenu2.png')} />
+              <View style={styles.viewContent}>
+                <Text style={styles.textFavorite}>Spicy fresh crab</Text>
+                <Text style={styles.textWaroenk}>Waroenk kita</Text>
+                <Text style={styles.textPrice}>$ 35</Text>
+              </View>
+              <View style={styles.viewButtonBuyAgain}>
+                <TouchableOpacity style={styles.ButtonBuyAgain}>
+                  <Text style={styles.textBuyAgain}>Buy Again</Text>
+                </TouchableOpacity>
+              </View>
             </View>
             <View style={styles.viewListItemFavorite}>
-                <Image source={require('../../assets/Profile/PhotoMenu.png')}></Image>
-                <View style={styles.viewContent}>
-                  <Text style={styles.textFavorite}>Spacy fresh crab</Text>
-                  <Text style={styles.textWaroenk}>Waroenk kita</Text>
-                  <Text style={styles.textPrice}>$ 35</Text>
-                </View>
-                <View style={styles.viewButtonBuyAgain}>
-                  <TouchableOpacity style={styles.ButtonBuyAgain}>
-                    <Text style={styles.textBuyAgain}>Buy Again</Text>
-                  </TouchableOpacity>
-                </View>
+              <Image source={require('../../assets/Profile/PhotoMenu.png')} />
+              <View style={styles.viewContent}>
+                <Text style={styles.textFavorite}>Spicy fresh crab</Text>
+                <Text style={styles.textWaroenk}>Waroenk kita</Text>
+                <Text style={styles.textPrice}>$ 35</Text>
+              </View>
+              <View style={styles.viewButtonBuyAgain}>
+                <TouchableOpacity style={styles.ButtonBuyAgain}>
+                  <Text style={styles.textBuyAgain}>Buy Again</Text>
+                </TouchableOpacity>
+              </View>
             </View>
             <View style={styles.viewListItemFavorite}>
-                <Image source={require('../../assets/Profile/PhotoMenu.png')}></Image>
-                <View style={styles.viewContent}>
-                  <Text style={styles.textFavorite}>Spacy fresh crab</Text>
-                  <Text style={styles.textWaroenk}>Waroenk kita</Text>
-                  <Text style={styles.textPrice}>$ 35</Text>
-                </View>
-                <View style={styles.viewButtonBuyAgain}>
-                  <TouchableOpacity style={styles.ButtonBuyAgain}>
-                    <Text style={styles.textBuyAgain}>Buy Again</Text>
-                  </TouchableOpacity>
-                </View>
+              <Image source={require('../../assets/Profile/PhotoMenu.png')} />
+              <View style={styles.viewContent}>
+                <Text style={styles.textFavorite}>Spicy fresh crab</Text>
+                <Text style={styles.textWaroenk}>Waroenk kita</Text>
+                <Text style={styles.textPrice}>$ 35</Text>
+              </View>
+              <View style={styles.viewButtonBuyAgain}>
+                <TouchableOpacity style={styles.ButtonBuyAgain}>
+                  <Text style={styles.textBuyAgain}>Buy Again</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-      </ScrollView>
-    </View>
+        </ScrollView>
+      </View>
+    </ParallaxScrollView>
   );
-};  
+};
 const styles = StyleSheet.create({
   container:{
     flex:1,
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
   },
   ScrollView:{
     backgroundColor:'white',
-    borderTopStartRadius:30,
+    borderRadius:30,
   },
   viewScrollView:{
     paddingLeft:160,
