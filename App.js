@@ -16,6 +16,7 @@ import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
 import ExploreMenu from './Screens/Home/ExploreMenuScreen';
 import FilterScreen from './Screens/Home/FilterScreen';
 import NotificationScreen from './Screens/Notification/NotificationScreen';
+import ChatDetail from './Screens/Chat/ChatDetailScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,7 @@ export default function App() {
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
+              
               <Tab.Screen name="Home" component={HomeScreen} options={{
                 tabBarIcon: () => (
                   <Image source={require('./assets/Home/Home.png')} />
@@ -67,7 +69,8 @@ export default function App() {
         <Stack.Screen name="ExploreMenu" component={ExploreMenu} options={{ headerShown: false }} />
         <Stack.Screen name="FilterScreen" component={FilterScreen} options={{ headerShown: false }} />
         <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{ headerShown: false }} />
-      </Stack.Navigator>
+        <Stack.Screen name="ChatDetail" component={ChatDetail} options={{ headerShown: false }} />  
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }
