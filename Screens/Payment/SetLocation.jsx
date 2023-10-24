@@ -3,6 +3,9 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Im
 import { useNavigation } from '@react-navigation/native';
 const SetLocation = () =>{
     const navigation = useNavigation();
+    const handleTrackOrder = () =>{
+      navigation.navigate('TrackOrderScreen')
+    }
     return(
         <ImageBackground source={require('../../assets/Locations/SetLocation3.png')} style={styles.imageBackground}>
             <View style={styles.viewSearch}>
@@ -22,7 +25,7 @@ const SetLocation = () =>{
                         </View>
                     </View>
                     <View style={styles.viewButtonSetLocation}>
-                        <TouchableOpacity style={styles.ButtonLocation}>
+                        <TouchableOpacity style={styles.ButtonLocation} onPress={handleTrackOrder}>
                             <Text style={styles.textSetLocation}>Set Location</Text>
                         </TouchableOpacity>
                     </View>
