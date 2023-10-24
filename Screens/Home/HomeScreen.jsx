@@ -67,6 +67,9 @@ const HomeScreen = () =>{
     const handleNotification = () =>{
       navigation.navigate('NotificationScreen')
     }
+    const handleDetailProduct =() =>{
+      navigation.navigate('DetailProduct')
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -112,13 +115,13 @@ const HomeScreen = () =>{
                       style={styles.viewListItem}
                       contentContainerStyle={{gap: 10 }}
                       renderItem={({ item }) => (
-                        <View style={styles.viewItem} key={item.id}>
-                          <View style={styles.viewImage}>
+                        <TouchableOpacity style={styles.viewItem} key={item.id} onPress={handleDetailProduct}>
+                          <View style={styles.viewImage} >
                             <Image source={item.image} />
                           </View>
                           <Text style={styles.textVegan}>{item.nameProduct}</Text>
                           <Text style={styles.textMin}>{item.min}</Text>
-                        </View>
+                        </TouchableOpacity>
                       )}
                 />
                <View style={styles.viewNeVi}>
@@ -132,7 +135,7 @@ const HomeScreen = () =>{
                         style={styles.viewListItem}
                         contentContainerStyle={{gap: 31, width:'100%' }}
                         renderItem={({ item }) => (
-                          <View style={styles.viewMenu} key={item.id}>
+                          <TouchableOpacity style={styles.viewMenu} key={item.id}>
                             <View style={styles.viewImageMenu}>
                               <Image source={item.image} />
                               <View style={styles.viewTexts}>
@@ -143,7 +146,7 @@ const HomeScreen = () =>{
                             <View style={styles.viewPrice}>
                                 <Text style={styles.textPrice}>{item. price}</Text>
                             </View>
-                          </View>
+                          </TouchableOpacity>
                         )}
                   />
                 </View>
