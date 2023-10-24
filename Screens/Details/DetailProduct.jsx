@@ -1,10 +1,18 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 const DetailProduct = ()=>{
     return(
+        <ParallaxScrollView
+            backgroundColor="transparent"
+            contentBackgroundColor="white"
+            parallaxHeaderHeight={300}
+            renderBackground={() => (
+                <Image style={styles.image} source={require('../../assets/DetailProduct/PhotoRestaurant.png')}></Image>
+        )}
+        >
         <View style={styles.container}>
-            <Image style={styles.image} source={require('../../assets/DetailProduct/PhotoRestaurant.png')}></Image>
             <ScrollView>
                 <View style={styles.viewScroll}>
                     <TouchableOpacity style={styles.Scroll}></TouchableOpacity>
@@ -122,6 +130,7 @@ const DetailProduct = ()=>{
                 </View>
             </ScrollView>
         </View>
+        </ParallaxScrollView>
     )
 }
 const styles = StyleSheet.create({

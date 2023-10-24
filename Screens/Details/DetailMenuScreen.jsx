@@ -1,10 +1,18 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 const DetailMenuScreen = ()=>{
     return(
+        <ParallaxScrollView
+            backgroundColor="transparent"
+            contentBackgroundColor="white"
+            parallaxHeaderHeight={300}
+            renderBackground={() => (
+                <Image style={styles.image} source={require('../../assets/DetailMenu/PhotoMenu.png')}></Image>
+        )}
+        >
         <View style={styles.container}>
-            <Image style={styles.image} source={require('../../assets/DetailMenu/PhotoMenu.png')}></Image>
             <ScrollView>
                 <View style={styles.viewScroll}>
                     <TouchableOpacity style={styles.Scroll}></TouchableOpacity>
@@ -102,13 +110,17 @@ const DetailMenuScreen = ()=>{
                             <View style={styles.viewReview}>
                                 <Text style={styles.textReview}>This Is great, So delicious!.</Text>
                             </View>
-
                         </View>
                     </View>
-                    <View></View>
+                </View>
+                <View style={styles.viewAdd}>
+                    <TouchableOpacity style={styles.buttonAdd}>
+                        <Text style={styles.textAdd}>Add To Chart</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         </View>
+    </ParallaxScrollView>
     )
 }
 const styles = StyleSheet.create({
@@ -302,6 +314,25 @@ const styles = StyleSheet.create({
         fontSize: 12.5,
         lineHeight: 21.66,
         flexWrap: 'wrap', // Cho phép văn bản tự động xuống hàng
+    },
+    viewAdd:{
+        paddingLeft:25,
+        paddingRight:25,
+        paddingTop:20
+    },
+    buttonAdd:{
+        backgroundColor:'#6B50F6',
+        paddingTop:22,
+        paddingBottom:22,
+        paddingLeft:115,
+        paddingRight:115,
+        borderRadius:15
+    },
+    textAdd:{
+        color:'white',
+        fontSize:14,
+        fontWeight:'600',
+        textAlign:'center'
     }
 })
 export default  DetailMenuScreen;
