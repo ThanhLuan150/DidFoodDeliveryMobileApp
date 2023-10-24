@@ -70,6 +70,9 @@ const HomeScreen = () =>{
     const handleDetailProduct =() =>{
       navigation.navigate('DetailProduct')
     }
+    const handleDetailMenu =() =>{
+      navigation.navigate('DetailMenuScreen')
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -135,7 +138,7 @@ const HomeScreen = () =>{
                         style={styles.viewListItem}
                         contentContainerStyle={{gap: 31, width:'100%' }}
                         renderItem={({ item }) => (
-                          <TouchableOpacity style={styles.viewMenu} key={item.id}>
+                          <TouchableOpacity style={styles.viewMenu} key={item.id} onPress={handleDetailMenu}>
                             <View style={styles.viewImageMenu}>
                               <Image source={item.image} />
                               <View style={styles.viewTexts}>
