@@ -7,10 +7,13 @@ const OrderDetailScreen = () =>{
     const handleConfirmOrder = () =>{
         navigation.navigate('ConfirmOrderScreen')
     }
+    const handleGoback = () =>{
+        navigation.goBack();
+    }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
-                <TouchableOpacity style={styles.goback}>
+                <TouchableOpacity style={styles.goback} onPress={handleGoback}>
                     <Image source={require('../../assets/Notification/Group.png')}></Image>
                 </TouchableOpacity>
                 <View style={styles.viewOrderDetail }>
@@ -121,15 +124,15 @@ const OrderDetailScreen = () =>{
                             </View>
                             <View style={styles.viewNumber}>
                                 <TouchableOpacity style={styles.button}>
-                                <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
+                                    <Image source={require('../../assets/OrderDetails/IconMinus.png')}></Image>
                                 </TouchableOpacity>
                                 <TextInput
-                                style={styles.TextInput}
-                                keyboardType="numeric"
-                                value="1"
+                                    style={styles.TextInput}
+                                    keyboardType="numeric"
+                                    value="1"
                                 />
                                 <TouchableOpacity style={styles.button}>
-                                <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
+                                    <Image source={require('../../assets/OrderDetails/IconPlus.png')}></Image>
                                 </TouchableOpacity>
                             </View>
                         </View>
