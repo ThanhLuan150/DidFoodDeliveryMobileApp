@@ -78,7 +78,7 @@ const HomeScreen = () =>{
             <ScrollView>
                 <View style={styles.viewFiFa}>
                     <View style={styles.viewtext}>
-                        <Text style={styles.textFine}>Fine Your</Text>
+                        <Text style={styles.textFine}>Find Your</Text>
                         <Text style={styles.textFine}>Favorite Food</Text>
                     </View>
                     <TouchableOpacity onPress={handleNotification}>
