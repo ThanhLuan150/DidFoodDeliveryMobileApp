@@ -65,7 +65,8 @@ const HomeScreen = () =>{
       navigation.navigate('FilterScreen')
     }
     const handleNotification = () =>{
-      navigation.navigate('NotificationScreen')
+      navigation.navigate('NotificationScreen A')
+      navigation.navigate('NotificationScreen A;ew')
     }
     const handleDetailProduct =() =>{
       navigation.navigate('DetailProduct')
