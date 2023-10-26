@@ -1,93 +1,73 @@
-import React from "react";
+import React, { useState } from 'react';
 import { View, ImageBackground, StyleSheet, TouchableOpacity, Text, Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const CallScreen = () => {
+    const [isMuted, setIsMuted] = useState(false);
+
+    const toggleSpeaker = () => {
+        setIsMuted(!isMuted);
+    };
     const navigation = useNavigation();
     const handleChatDetailScreen = () => {
         navigation.navigate("ChatDetail");
     }
-    const handleHomeScreen = () => {
-        navigation.navigate("Home");
-    }
     return (
-        <ImageBackground source={require('../../assets/Message/Pattern.png')} resizeMode="contain" style={{ width: '100%', flex: 1 }}>
-            <TouchableOpacity onPress={handleHomeScreen}>
-                <Image style={styles.backIcon} source={require('../../assets/Message/IconBack.png')}></Image>
-            </TouchableOpacity>
-            <View style={{ marginTop: 19, marginBottom: 2, left: 25 }}>
-                <Text style={styles.chatText}>Chats</Text>
+        <ImageBackground source={require('../../assets/Message/Pattern.png')} resizeMode="contain" style={styles.container}>
+            <View style={{ justifyContent: "center", top: '50%', flexDirection: "row", height: 200 }}>
             </View>
-            <View>
-                <TouchableOpacity style={styles.person} onPress={handleChatDetailScreen}>
-                    <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile.png')}></Image>
-                    <Text style={styles.name}>Louis Kelly</Text>
-                    <Text style={styles.time}>20:00</Text>
-                    <Text style={styles.shortText}>Your Order Just Adrrived!</Text>
+            <View style={{ justifyContent: "center", flexDirection: "row", width: '100%', marginBottom: 60}}>
+                <Image style={styles.callavt} source={require('../../assets/Message/CallAvt.png')}></Image>
+            </View>
+            <View style={{width: '100%' }}>
+                <Text style={styles.name}>Richard Lewis</Text>
+                <Text style={styles.callstatus}>Ringing...</Text>
+            </View>
+            <View style={styles.actionContainer}>
+                <TouchableOpacity onPress={toggleSpeaker}>
+                    <Image style={styles.actionBtn} source={isMuted ? require('../../assets/Message/SpeakerIcon.png') : require('../../assets/Message/MuteIcon.png')}></Image>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.person}>
-                    <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile(1).png')}></Image>
-                    <Text style={styles.name}>Paul Koch</Text>
-                    <Text style={styles.time}>20:00</Text>
-                    <Text style={styles.shortText}>Your Order Just Adrrived!</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.person}>
-                    <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile(2).png')}></Image>
-                    <Text style={styles.name}>Carla Klein</Text>
-                    <Text style={styles.time}>20:00</Text>
-                    <Text style={styles.shortText}>Your Order Just Adrrived!</Text>
+                <TouchableOpacity onPress={handleChatDetailScreen}>
+                    <Image style={styles.actionBtn} source={require('../../assets/Message/CloseIcon.png')}></Image>
                 </TouchableOpacity>
             </View>
-
         </ImageBackground>
     )
 }
 const styles = StyleSheet.create({
-    backIcon: {
-        height: 45,
-        width: 45,
-        marginTop: 38,
-        left: 25
-    },
-    chatText: {
-        fontSize: 25,
-        fontWeight: "bold",
-    },
-    person: {
-        backgroundColor: "white",
-        height: 81,
-        margin: 20,
-        marginTop: 10,
-        marginBottom: 10,
-        position: "relative",
-        borderRadius: 22
-    },
-    avt: {
-        margin: 10,
-        marginLeft: 8,
-        height: 62,
-        width: 62,
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignContent: 'center',
+    }
+    ,
+    callavt: {
+        height: 160,
+        width: 160,
+        border: 'solid red 12',
     },
     name: {
-        position: "absolute",
-        top: 20,
-        left: 87.45,
-        fontSize: 15
-        ,
-        fontWeight: 'bold'
+        textAlign: 'center',
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginBottom: 20
     },
-    time: {
-        position: "absolute",
-        top: 20,
-        right: 12,
-        fontSize: 14,
+    callstatus: {
+        textAlign: 'center',
+        fontSize: 19,
         opacity: 0.5
     },
-    shortText: {
-        position: "absolute",
-        left: 87.45,
-        bottom: 19,
-        fontSize: 14,
-        opacity: 0.5
+    actionContainer: {
+        position: 'absolute',
+        bottom: 65,
+        width: '100%',
+        justifyContent: 'center',
+        flexDirection: 'row'
+    },
+    actionBtn: {
+        height: 78,
+        width: 78,
+        marginLeft: 10,
+        marginRight: 10
     }
 });
 export default CallScreen;

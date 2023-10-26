@@ -16,10 +16,9 @@ import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
 import ExploreMenu from './Screens/Home/ExploreMenuScreen';
 import FilterScreen from './Screens/Home/FilterScreen';
 import NotificationScreen from './Screens/Notification/NotificationScreen';
-import ChatDetail from './Screens/Chat/ChatDetailScreen';
 import SignUpProcessScreen from './Screens/Author/SignUpProcessScreen';
 import UploadPhotoScreen from './Screens/Author/UploadPhotoScreen';
-import UploadPhotoPreview from './Screens/Author/UploadPhotoScreen';
+import UploadPhotoPreview from './Screens/Author/UploadReviewScreen';
 import SetLocationScreen from './Screens/Author/SetLocationScreen';
 import SignUpSucessfullyNotificationScreen from './Screens/Author/SignUpSucessfullyNotificationScreen';
 import ForgetPasswordScreen from './Screens/Author/ViaMethodScreen';
@@ -30,13 +29,14 @@ import VoucherPromotion from './Screens/Vouchers/VoucherPromotionSCreen';
 import OrderDetailScreen from './Screens/Orders/OrderDetail';
 import ConfirmOrderScreen from './Screens/Payment/ConfilmOrderScreen';
 import EditPaymentScreen from './Screens/Payment/EditPaymentScreen';
-import YourOrderScreen from './Screens/Payment/YourOrderScreen';
 import EditLocationScreen from './Screens/Payment/EditLocationScreen';
+import YourOrderScreen from './Screens/Payment/YourOrderScreen';
 import SetLocation from './Screens/Payment/SetLocation';
 import TrackOrderScreen from './Screens/Payment/TrackOrders';
 import DetailProduct from './Screens/Details/DetailProduct';
 import DetailMenuScreen from './Screens/Details/DetailMenuScreen';
-
+import ChatDetail from './Screens/Chat/ChatDetailScreen';
+import MessageScreen from './Screens/Chat/MessageScreen';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -93,13 +93,13 @@ export default function App() {
                 tabBarLabel: 'Cart',
                 headerShown: false,
               }} />
-              <Tab.Screen name="Call" component={CallScreen} options={{
+              <Tab.Screen name="Message" component={MessageScreen} options={{
                 tabBarIcon: () => (
                   <Image source={require('./assets/Home/Chat.png')} />
                 ),
-                tabBarLabel: 'Call',
+                tabBarLabel: 'Message',
                 headerShown: false,
-              }} />
+              }} /> 
             </Tab.Navigator>
           )}
         </Stack.Screen>
@@ -108,6 +108,7 @@ export default function App() {
         <Stack.Screen name="FilterScreen" component={FilterScreen} options={{ headerShown: false }} />
         <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ChatDetail" component={ChatDetail} options={{ headerShown: false }} />  
+        <Stack.Screen name="CallScreen" component={CallScreen} options={{ headerShown: false }} />  
         </Stack.Navigator>
     </NavigationContainer>
   );

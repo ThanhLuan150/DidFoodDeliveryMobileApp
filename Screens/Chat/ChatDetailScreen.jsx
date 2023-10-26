@@ -4,55 +4,60 @@ import { useNavigation } from '@react-navigation/native';
 const ChatDetail = () => {
     const navigation = useNavigation();
     const handleCallScreen = () => {
+        navigation.navigate("CallScreen");
+    }
+    const handleHomeScreen = () => {
         navigation.navigate("Home");
     }
     return (
-        <View style={styles.container}>
-            <ImageBackground source={require('../../assets/Message/Pattern.png')} resizeMode="contain" style={{ width: '100%', flex: 1, }}>
-                <TouchableOpacity onPress={handleCallScreen}>
-                    <Image style={styles.backIcon} source={require('../../assets/Message/IconBack.png')}></Image>
+
+        <ImageBackground source={require('../../assets/Message/Pattern.png')} resizeMode="contain" style={styles.container}>
+            <TouchableOpacity onPress={handleHomeScreen}>
+                <Image style={styles.backIcon} source={require('../../assets/Message/IconBack.png')}></Image>
+            </TouchableOpacity><View style={{ marginTop: 19, marginBottom: 2, left: 25 }}>
+                <Text style={styles.chatText}>Chats</Text>
+            </View>
+            <View style={styles.person}>
+                <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile.png')}></Image>
+                <Text style={styles.name}>Louis Kelly</Text>
+                <Text style={styles.shortText}><View style={styles.statuspoint}></View> Online</Text>
+                <TouchableOpacity style={styles.calllogo} onPress={handleCallScreen}>
+                    <Image source={require('../../assets/Message/CallLogo.png')}></Image>
                 </TouchableOpacity>
-                <View style={{ marginTop: 19, marginBottom: 2, left: 25 }}>
-                    <Text style={styles.chatText}>Chats</Text>
+            </View>
+            <View style={{ margin: 20, width: '100% - 40' }}>
+                <View style={[styles.message, styles.friendmessage]}>
+                    <Text>Just to order</Text>
                 </View>
-                <TouchableOpacity style={styles.person}>
-                    <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile.png')}></Image>
-                    <Text style={styles.name}>Louis Kelly</Text>
-                    <Text style={styles.time}>20:00</Text>
-                    <Text style={styles.shortText}>Your Order Just Adrrived!</Text>
-                </TouchableOpacity>
-                <View style={{ margin: 20, width: '100% - 40' }}>
-                    <View style={[styles.message, styles.friendmessage]}>
-                        <Text>Just to order</Text>
-                    </View>
-                    <View style={styles.message}>
-                        <Text style={styles.textmessage}>Okay, for what level of spiciness?</Text>
-                    </View>
-                    <View style={[styles.message, styles.friendmessage]}>
-                        <Text>Okay, wait a minutes!</Text>
-                    </View>
-                    <View style={styles.message}>
-                        <Text style={styles.textmessage}>Okay I'm waiting!</Text>
-                    </View>
+                <View style={styles.message}>
+                    <Text style={styles.textmessage}>Okay, for what level of spiciness?</Text>
                 </View>
-                <View style={{}}>
-                    <View style={styles.chatInput}>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Nhập tin nhắn..."
-                        />
-                        <TouchableOpacity style={styles.sendBtn} onPress={this.sendMessage}>
-                            <Image style={{ height: 24, width: 24 }} source={require('../../assets/Message/IconSend.png')}></Image>
-                        </TouchableOpacity>
-                    </View>
+                <View style={[styles.message, styles.friendmessage]}>
+                    <Text>Okay, wait a minutes!</Text>
                 </View>
-            </ImageBackground>
-        </View>)
+                <View style={styles.message}>
+                    <Text style={styles.textmessage}>Okay I'm waiting!</Text>
+                </View>
+            </View>
+            <View style={{ position: "absolute", width: '100%', right: '0%', bottom: 0, }}>
+                <View style={styles.chatInput}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Nhập tin nhắn..."
+                    />
+                    <TouchableOpacity style={styles.sendBtn} onPress={this.sendMessage}>
+                        <Image style={{ height: 24, width: 24 }} source={require('../../assets/Message/IconSend.png')}></Image>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </ImageBackground>
+    )
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F6F6F6'
+        backgroundColor: '#F6F6F6',
+        width: '100%',
     },
     backIcon: {
         height: 45,
@@ -64,6 +69,13 @@ const styles = StyleSheet.create({
     chatText: {
         fontSize: 25,
         fontWeight: "bold",
+    },
+    statuspoint: {
+        width: 9,
+        height: 9,
+        backgroundColor: "#6B50F6",
+        position: "absolute",
+        borderRadius: 5,
     },
     person: {
         backgroundColor: "white",
@@ -88,12 +100,13 @@ const styles = StyleSheet.create({
         ,
         fontWeight: 'bold'
     },
-    time: {
+    calllogo: {
         position: "absolute",
-        top: 20,
-        right: 12,
-        fontSize: 14,
-        opacity: 0.5
+        top: '25%',
+        right: 20,
+        width: 40,
+        height: 40,
+
     },
     shortText: {
         position: "absolute",
@@ -117,13 +130,13 @@ const styles = StyleSheet.create({
         paddingRight: 12,
         alignSelf: 'flex-end',
         justifyContent: "center",
-        borderRadius: 13
+        borderRadius: 13,
+        maxWidth: '85%',
     },
     textmessage: {
         color: 'white'
     },
     chatInput: {
-        top: '50%',
         height: 74,
         backgroundColor: 'white',
         margin: 10,
