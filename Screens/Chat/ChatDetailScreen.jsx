@@ -6,11 +6,15 @@ const ChatDetail = () => {
     const handleCallScreen = () => {
         navigation.navigate("CallScreen");
     }
+    const handleHomeScreen = () => {
+        navigation.navigate("Home");
+    }
     return (
 
         <ImageBackground source={require('../../assets/Message/Pattern.png')} resizeMode="contain" style={styles.container}>
-            <Image style={styles.backIcon} source={require('../../assets/Message/IconBack.png')}></Image>
-            <View style={{ marginTop: 19, marginBottom: 2, left: 25 }}>
+            <TouchableOpacity onPress={handleHomeScreen}>
+                <Image style={styles.backIcon} source={require('../../assets/Message/IconBack.png')}></Image>
+            </TouchableOpacity><View style={{ marginTop: 19, marginBottom: 2, left: 25 }}>
                 <Text style={styles.chatText}>Chats</Text>
             </View>
             <View style={styles.person}>
