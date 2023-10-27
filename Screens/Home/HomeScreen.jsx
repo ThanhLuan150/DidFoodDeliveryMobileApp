@@ -1,63 +1,13 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import fakeData from "../../Data/Data";
 const HomeScreen = () =>{
-  const products = [
-    { id: 1,
-      image: require('../../assets/Home/mage.png'), 
-      nameProduct: 'Vegan Resto', 
-      min:'12 min' 
-    },
-    { id: 2,
-      image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Vegan Resto',
-      min:'13 min' 
-    },
-    { id: 3,
-      image: require('../../assets/Home/luamach.png'), 
-      nameProduct: 'Vegan Resto', 
-      min:'14 min' 
-    },
-    { id: 4,
-      image: require('../../assets/Home/mage.png'), 
-      nameProduct: 'Vegan Resto', 
-      min:'12 min' 
-    },
-    { id: 5,
-      image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Vegan Resto',  
-      min:'13 min' 
-    },
-    { id: 6,
-      image: require('../../assets/Home/luamach.png'), 
-      nameProduct: 'Vegan Resto',  
-      min:'14 min' 
-    },
-  ];
-  const Menu =[
-    { id: 1,
-      image: require('../../assets/Home/MenuPhoto.png'), 
-      nameMenu: 'Herbar Pancake',
-      name:'Warung Herbal',
-      price:'$7' 
-    },
-    { id: 2,
-      image: require('../../assets/Home/Menu.png'), 
-      nameMenu: 'Fruit Salad', 
-      name:'Wijie Resto',
-      price:'$5' 
-    },
-    { id: 3,
-      image: require('../../assets/Home/Photo.png'), 
-      nameMenu: 'Green  Noddle',
-      name:'Noodle Home',
-      price:'$15' 
-    },
-  ]
+  const { products, menus } = fakeData;
   const navigation = useNavigation();
     const handleExploreRestaurant  = () => {
         navigation.navigate('ExploreRestaurant'); 
-      };
+    };
     const handleExploreMenu  = () => {
         navigation.navigate('ExploreMenu'); 
       };
@@ -65,14 +15,13 @@ const HomeScreen = () =>{
       navigation.navigate('FilterScreen')
     }
     const handleNotification = () =>{
-      navigation.navigate('NotificationScreen A')
-      navigation.navigate('NotificationScreen A;ew')
+      navigation.navigate('NotificationScreen')
     }
-    const handleDetailProduct =() =>{
-      navigation.navigate('DetailProduct')
-    }
-    const handleDetailMenu =() =>{
-      navigation.navigate('DetailMenuScreen')
+    const handleDetailProduct = (product) => {
+      navigation.navigate('DetailProduct', { product });
+    }    
+    const handleDetailMenu =(menu) =>{
+      navigation.navigate('DetailMenuScreen', { menu } );
     }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -108,8 +57,7 @@ const HomeScreen = () =>{
                             </TouchableOpacity>
                         </View>
                     </View>
-                </View>
-                <View style={styles.viewNeVi}>
+                </View><View style={styles.viewNeVi}>
                     <Text style={styles.textNe}>Nearest Restaurant</Text>
                     <Text style={styles.textviewMore}onPress={handleExploreRestaurant}>View More</Text>
                 </View>
@@ -118,8 +66,9 @@ const HomeScreen = () =>{
                       horizontal={true}
                       style={styles.viewListItem}
                       contentContainerStyle={{gap: 10 }}
+                      keyExtractor={(item) => item.id.toString()}
                       renderItem={({ item }) => (
-                        <TouchableOpacity style={styles.viewItem} key={item.id} onPress={handleDetailProduct}>
+                        <TouchableOpacity style={styles.viewItem} key={item.id}  onPress={() => handleDetailProduct(item)}>
                           <View style={styles.viewImage} >
                             <Image source={item.image} />
                           </View>
@@ -134,14 +83,14 @@ const HomeScreen = () =>{
                 </View>
                 <View>
                   <FlatList
-                        data={Menu}
+                        data={menus}
                         horizontal={false}
                         style={styles.viewListItem}
                         contentContainerStyle={{gap: 31, width:'100%' }}
                         renderItem={({ item }) => (
-                          <TouchableOpacity style={styles.viewMenu} key={item.id} onPress={handleDetailMenu}>
+                          <TouchableOpacity style={styles.viewMenu} key={item.id} onPress={() => handleDetailMenu(item)}>
                             <View style={styles.viewImageMenu}>
-                              <Image source={item.image} />
+                            <Image source={item.image} />
                               <View style={styles.viewTexts}>
                                 <Text style={styles.textmenu}>{item.nameMenu}</Text>
                                 <Text style={styles.textName}>{item.name}</Text>
@@ -178,8 +127,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         paddingRight:60,
         paddingBottom:20
-      },
-      viewsearch:{
+      },viewsearch:{
         flexDirection:'row'
       },
       textInput:{

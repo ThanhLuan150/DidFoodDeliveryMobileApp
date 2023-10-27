@@ -2,14 +2,23 @@ import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import { useRoute } from '@react-navigation/native';
+import fakeData from '../../Data/Data'
 const DetailProduct = ()=>{
+    const navigation = useNavigation();
+    const { products } = fakeData;
+    const route = useRoute();
+    const { product } = route.params;
+    const handleDetailProduct = (product) => {
+        navigation.navigate('DetailProduct', { product });
+      }    
     return(
         <ParallaxScrollView
             backgroundColor="transparent"
             contentBackgroundColor="white"
             parallaxHeaderHeight={300}
             renderBackground={() => (
-                <Image style={styles.image} source={require('../../assets/DetailProduct/PhotoRestaurant.png')}></Image>
+                <Image style={styles.image} source={product.image} ></Image>
         )}
         >
         <View style={styles.container}>
@@ -27,65 +36,45 @@ const DetailProduct = ()=>{
                     </View>
                 </View>
                 <View style={styles.viewName}>
-                    <Text style={styles.textName}>Wijie Bar and Resto</Text>
+                    <Text style={styles.textName}>{product. nameProduct}</Text>
                 </View>
                 <View style={styles.viewFeedback}>
                     <View style={styles.viewLoccation}>
                         <Image source={require('../../assets/DetailProduct/Iconmappin.png')}></Image>
-                        <Text style={styles.textkm}>19 km</Text>
+                        <Text style={styles.textkm}>{product.location}</Text>
                     </View>
                     <View style={styles.viewLoccation}>
                         <Image source={require('../../assets/DetailProduct/IconStar.png')}></Image>
-                        <Text style={styles.textkm} >4.8 Rating</Text>
+                        <Text style={styles.textkm} >{product.rating} Rating</Text>
                     </View>
                 </View>
                 <View style={styles.viewDescription}>
-                    <Text style={styles.textDescription}>Most whole Alaskan Red King Crabs get broken down into legs, claws, and lump meat. We offer all of these options as well in our online shop, but there is nothing like getting the whole . . . .</Text>
+                    <Text style={styles.textDescription}>{product.description}</Text>
                 </View>
                 <View style={styles.viewPopularMenu}>
                     <Text style={styles.textPopularMenu}>Popular Menu</Text>
                     <Text style={styles.textViewMore}>View more</Text>
                 </View>
-                <View style ={styles.viewListProduct}>
-                    <View style={styles.viewItemProduct}>
-                        <View style={styles.viewImage}>
-                            <Image source={require('../../assets/DetailProduct/image32.png')}></Image>
-                        </View>
-                        <Text style={styles.textProduct}>Spacy fresh crab</Text>
-                        <Text style={styles.textPrice}>12 $</Text>
-                    </View>
-                    <View style={styles.viewItemProduct}>
-                        <View style={styles.viewImage}>
-                            <Image source={require('../../assets/DetailProduct/image34.png')}></Image>
-                        </View>
-                        <Text style={styles.textProduct}>Spacy fresh crab</Text>
-                        <Text style={styles.textPrice}>12 $</Text>
-                    </View>
-                </View>
+                <FlatList
+                      data={products}
+                      horizontal={true}
+                      style={styles.viewListItem}
+                      contentContainerStyle={{gap: 10 }}
+                      keyExtractor={(item) => item.id.toString()}
+                      renderItem={({ item }) => (
+                        <TouchableOpacity style={styles.viewItem} key={item.id}  onPress={() => handleDetailProduct(item)}>
+                          <View style={styles.viewImage} >
+                            <Image source={item.image} />
+                          </View>
+                          <Text style={styles.textVegan}>{item.nameProduct}</Text>
+                          <Text style={styles.textMin}>{item.min}</Text>
+                        </TouchableOpacity>
+                      )}
+                />
                 <View style={styles.viewPopularMenu}>
                     <Text style={styles.textPopularMenu}>Testimonials</Text>
                 </View>
                 <View style={styles.viewTes}>
-                    <View style={styles.viewitemTes}>
-                        <View style={styles.imagee}>
-                            <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
-                        </View>
-                        <View>
-                            <View style={styles.viewNameDate}>
-                                <View>
-                                    <Text style={styles.textnameI}>Dianne Russell</Text>
-                                    <Text style={styles.textDateI}>12 April 2021</Text>
-                                </View>
-                                <TouchableOpacity style={styles.buttonRatting}>
-                                    <Image source={require('../../assets/DetailProduct/IconStar1.png')}></Image>
-                                    <Text style={styles.textrating}>5</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={styles.viewReview}>
-                                <Text style={styles.textReview}>This Is great, So delicious!.</Text>
-                            </View>
-                        </View>
-                    </View>
                     <View style={styles.viewitemTes}>
                         <View style={styles.imagee}>
                             <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
@@ -138,7 +127,8 @@ const styles = StyleSheet.create({
         flex:1,
       },
     image:{
-        width: '100%'
+        width:'100%',
+        height:400
     },
     viewScroll:{
         paddingTop:18,
@@ -212,6 +202,49 @@ const styles = StyleSheet.create({
         fontSize:12.5,
         lineHeight:21.66
     },
+    viewListItem:{
+        paddingTop:20,
+        paddingBottom:20,
+        paddingLeft:15,
+        paddingRight:15,
+        flexDirection:'row',
+        width:'100%'
+      },
+    viewItem: {
+        backgroundColor: 'white',
+        borderWidth:1,
+        borderColor:'#6B50F6',
+        borderRadius: 22,
+        shadowColor: 'rgba(90, 108, 234, 0.07)',
+        shadowOffset: { width: 12, height: 26 },
+        shadowOpacity: 1,
+        shadowRadius: 50,
+        elevation: 5, // Điều chỉnh giá trị để thay đổi độ sâu của bóng đổ (cho Android)
+      }
+    ,viewImage:{
+        paddingLeft:21,
+        paddingRight:30,
+        paddingBottom:17,
+        paddingTop:20
+    },
+    textVegan:{
+        fontSize:16,
+        fontWeight:'600',
+        lineHeight:20.96,
+        color:'#22242E',
+        textAlign:'center',
+        paddingLeft:25,
+        paddingRight:25,
+        paddingBottom:4
+    },
+    textMin:{
+        fontSize:13,
+        paddingBottom:26,
+        fontWeight:'400',
+        lineHeight:17.03,
+        color:'#22242E',
+        textAlign:'center',
+    } ,
     viewPopularMenu:{
         paddingLeft:33,
         paddingRight:32,

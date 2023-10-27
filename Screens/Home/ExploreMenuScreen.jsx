@@ -1,30 +1,15 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import fakeData from "../../Data/Data";
 const ExploreMenu = () =>{
-  const Menu =[
-    { id: 1,
-      image: require('../../assets/Home/MenuPhoto.png'), 
-      nameMenu: 'Herbar Pancake',
-      name:'Warung Herbal',
-      price:'$7' 
-    },
-    { id: 2,
-      image: require('../../assets/Home/Menu.png'), 
-      nameMenu: 'Fruit Salad', 
-      name:'Wijie Resto',
-      price:'$5' 
-    },
-    { id: 3,
-      image: require('../../assets/Home/Photo.png'), 
-      nameMenu: 'Green  Noddle',
-      name:'Noodle Home',
-      price:'$15' 
-    },
-  ]
+  const {menus } = fakeData;
   const navigation = useNavigation();
   const handleFilterScreen = () =>{
     navigation.navigate('FilterScreen')
+  }
+  const handleDetailMenu =() =>{
+    navigation.navigate('DetailMenuScreen')
   }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -48,12 +33,12 @@ const ExploreMenu = () =>{
                 </View>
                 <View>
                   <FlatList
-                        data={Menu}
+                        data={menus}
                         horizontal={false}
                         style={styles.viewListItem}
                         contentContainerStyle={{gap: 31, width:'100%' }}
                         renderItem={({ item }) => (
-                          <View style={styles.viewMenu} key={item.id}>
+                          <TouchableOpacity style={styles.viewMenu} key={item.id}  onPress={handleDetailMenu}>
                             <View style={styles.viewImageMenu}>
                               <Image source={item.image} />
                               <View style={styles.viewTexts}>
@@ -64,7 +49,7 @@ const ExploreMenu = () =>{
                             <View style={styles.viewPrice}>
                                 <Text style={styles.textPrice}>{item. price}</Text>
                             </View>
-                          </View>
+                          </TouchableOpacity>
                         )}
                   />
                 </View>
