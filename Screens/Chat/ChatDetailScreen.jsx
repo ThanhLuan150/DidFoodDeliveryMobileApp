@@ -39,7 +39,7 @@ const ChatDetail = () => {
                     <Text style={styles.textmessage}>Okay I'm waiting!</Text>
                 </View>
             </View>
-            <View style={{ position: "absolute", width: '100%', right: '0%', bottom: 0, }}>
+            <View style={{ position: "absolute", width: '100%', right: '0%', bottom: 0, backgroundColor: "#F6F6F6"}}>
                 <View style={styles.chatInput}>
                     <TextInput
                         style={styles.input}
