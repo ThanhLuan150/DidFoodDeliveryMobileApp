@@ -1,39 +1,9 @@
 import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import fakeData from "../../Data/Data";
 const ExploreRestaurant = () =>{
-  const products = [
-    { id: 1,
-      image: require('../../assets/Home/mage.png'), 
-      nameProduct: 'Vegan Resto', 
-      min:'12 min' 
-    },
-    { id: 2,
-      image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Vegan Resto', 
-      min:'13 min' 
-    },
-    { id: 3,
-      image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Good Food', 
-      min:'14 min' 
-    },
-    { id: 4,
-      image: require('../../assets/Home/mage.png'), 
-      nameProduct: 'Vegan ', 
-      min:'12 min' 
-    },
-    { id: 5,
-      image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Vegan Resto', 
-      min:'13 min' 
-    },
-    { id: 6,
-      image: require('../../assets/Home/Heaththy.png'), 
-      nameProduct: 'Vegan Resto',
-      min:'14 min' 
-    },
-  ];
+  const { products } = fakeData;
   const navigation = useNavigation();
   const handleFilterScreen = () =>{
     navigation.navigate('FilterScreen')

@@ -2,14 +2,19 @@ import React from "react";
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import { useRoute } from '@react-navigation/native';
+import fakeData from '../../Data/Data'
 const DetailMenuScreen = ()=>{
+    // const { menu } = fakeData;
+    const route = useRoute();
+    const { menu } = route.params;
     return(
         <ParallaxScrollView
             backgroundColor="transparent"
             contentBackgroundColor="white"
             parallaxHeaderHeight={300}
             renderBackground={() => (
-                <Image style={styles.image} source={require('../../assets/DetailMenu/PhotoMenu.png')}></Image>
+                <Image style={styles.image} source={menu.image}></Image>
         )}
         >
         <View style={styles.container}>
@@ -27,20 +32,20 @@ const DetailMenuScreen = ()=>{
                     </View>
                 </View>
                 <View style={styles.viewName}>
-                    <Text style={styles.textName}>Rainbow Sandwich Sugarless</Text>
+                    <Text style={styles.textName}>{menu.nameMenu}</Text>
                 </View>
                 <View style={styles.viewFeedback}>
                     <View style={styles.viewLoccation}>
                         <Image source={require('../../assets/DetailMenu/IconStar.png')}></Image>
-                        <Text style={styles.textkm}>4,8 Rating</Text>
+                        <Text style={styles.textkm}>{menu.rating} Rating</Text>
                     </View>
                     <View style={styles.viewLoccation}>
                         <Image source={require('../../assets/DetailMenu/shoppingbag1.png')}></Image>
-                        <Text style={styles.textkm} >2000+ Order</Text>
+                        <Text style={styles.textkm} >{menu.order} Order</Text>
                     </View>
                 </View>
                 <View style={styles.viewDescription}>
-                    <Text style={styles.textDescription}>Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.</Text>
+                    <Text style={styles.textDescription}>{menu.description}</Text>
                     <View style={{ paddingTop:25, paddingBottom:25 }}>
                         <Text style={styles.textReview}>• Strowberry </Text>
                         <Text style={styles.textReview}>• Cream</Text>
@@ -51,30 +56,10 @@ const DetailMenuScreen = ()=>{
                 <View style={styles.viewPopularMenu}>
                     <Text style={styles.textPopularMenu}>Testimonials</Text>
                 </View>
-                <View style={styles.viewTes}>
+               <View style={styles.viewTes}>
                     <View style={styles.viewitemTes}>
                         <View style={styles.imagee}>
-                            <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
-                        </View>
-                        <View>
-                            <View style={styles.viewNameDate}>
-                                <View>
-                                    <Text style={styles.textnameI}>Dianne Russell</Text>
-                                    <Text style={styles.textDateI}>12 April 2021</Text>
-                                </View>
-                                <TouchableOpacity style={styles.buttonRatting}>
-                                    <Image source={require('../../assets/DetailProduct/IconStar1.png')}></Image>
-                                    <Text style={styles.textrating}>5</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={styles.viewReview}>
-                                <Text style={styles.textReview}>This Is great, So delicious!.</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.viewitemTes}>
-                        <View style={styles.imagee}>
-                            <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
+                             <Image  source={require('../../assets/DetailProduct/PhotoProfile.png')}></Image>
                         </View>
                         <View>
                             <View style={styles.viewNameDate}>
@@ -128,7 +113,8 @@ const styles = StyleSheet.create({
         flex:1,
       },
     image:{
-        width: '100%'
+        width: '100%',
+        height:400
     },
     viewScroll:{
         paddingTop:18,
