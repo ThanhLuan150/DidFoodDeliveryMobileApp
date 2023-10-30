@@ -8,6 +8,9 @@ const ExploreRestaurant = () =>{
   const handleFilterScreen = () =>{
     navigation.navigate('FilterScreen')
   }
+  const handleDetailProduct = (product) => {
+    navigation.navigate('DetailProduct', { product });
+  }    
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
             <ScrollView>
@@ -35,13 +38,13 @@ const ExploreRestaurant = () =>{
                       style={styles.viewListItem}
                       contentContainerStyle={{ flex:1,width:'100%', flexDirection:'column',gap: 20 ,height:'auto' }}
                       renderItem={({ item }) => (
-                        <View style={styles.viewItem}  key={item.id}>
+                        <TouchableOpacity style={styles.viewItem}  key={item.id} onPress={() => handleDetailProduct(item)}>
                           <View style={styles.viewImage}>
                             <Image source={item.image} />
                           </View>
                           <Text style={styles.textVegan}>{item.nameProduct}</Text>
                           <Text style={styles.textMin}>{item.min}</Text>
-                        </View>
+                        </TouchableOpacity>
                       )}
                 />
             </ScrollView>

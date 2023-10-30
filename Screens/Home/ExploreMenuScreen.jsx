@@ -8,8 +8,8 @@ const ExploreMenu = () =>{
   const handleFilterScreen = () =>{
     navigation.navigate('FilterScreen')
   }
-  const handleDetailMenu =() =>{
-    navigation.navigate('DetailMenuScreen')
+  const handleDetailMenu =(menu) =>{
+    navigation.navigate('DetailMenuScreen', { menu } );
   }
     return(
         <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
@@ -38,7 +38,7 @@ const ExploreMenu = () =>{
                         style={styles.viewListItem}
                         contentContainerStyle={{gap: 31, width:'100%' }}
                         renderItem={({ item }) => (
-                          <TouchableOpacity style={styles.viewMenu} key={item.id}  onPress={handleDetailMenu}>
+                          <TouchableOpacity style={styles.viewMenu} key={item.id}  onPress={() => handleDetailMenu(item)}>
                             <View style={styles.viewImageMenu}>
                               <Image source={item.image} />
                               <View style={styles.viewTexts}>
