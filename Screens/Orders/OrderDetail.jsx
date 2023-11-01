@@ -103,6 +103,9 @@ const styles = StyleSheet.create({
     paddingLeft:25,
     paddingRight:190 
  },
+ deleteImage:{
+    marginLeft:23
+ },
  textOrderDetail:{
      color:'#22242E',
      fontSize:25,
