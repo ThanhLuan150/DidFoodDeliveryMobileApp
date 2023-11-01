@@ -1,46 +1,116 @@
-import { View ,ImageBackground,StyleSheet,Image, TextInput,TouchableOpacity, Text } from "react-native";
+import React, { useState } from "react";
+import { View, ImageBackground, StyleSheet, Image, TextInput, TouchableOpacity, Text,Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-const SignUpScreen  = ()=>{
+import axios from 'axios';
+
+const SignUpScreen = () => {
     const navigation = useNavigation();
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [keepSignedIn, setKeepSignedIn] = useState(false);
+    const [emailSpecialPricing, setEmailSpecialPricing] = useState(false);
+
     const handleLoginScreen = () => {
-        navigation.navigate('SignIn'); 
-      };
-    const handlePSignUpProcessScreen = () =>{
-      navigation.navigate('SignUpProcessScreen')
-    }
-    return(
-        <ImageBackground source={require('../../assets/Signup_Signin/Signin.png')} style={styles.imageBackground} >
+        navigation.navigate('SignIn');
+    };
+
+    const handleSignUp = () => {
+        // Perform client-side validation here
+
+        if (!name || !email || !password) {
+            return;
+        }
+
+        // Construct the user object to be sent to the API
+        const user = {
+            name,
+            email,
+            password,
+        };
+
+        // Post user data to the mock API
+        axios.post('https://63a5721a318b23efa793a770.mockapi.io/api/users', user)
+            .then(response => {
+                // Handle successful registration
+                console.log("User registered:", response.data);
+                Alert.alert("Sign up successfully");
+                // Navigate to the next screen or perform other actions
+                navigation.navigate('SignIn');
+            })
+            .catch(error => {
+                // Handle registration error
+                console.error("Registration failed:", error);
+
+                // Add error handling and display error messages if needed
+            });
+    };
+
+    return (
+        <ImageBackground source={require('../../assets/Signup_Signin/Signin.png')} style={styles.imageBackground}>
             <View style={styles.viewTestSign}>
                 <Text style={styles.textSign}>Sign Up for free</Text>
             </View>
             <View style={styles.viewInput}>
                 <View style={styles.viewTextInput}>
-                        <TextInput style={styles.TextInput} placeholder="Name"/>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="Name"
+                        value={name}
+                        onChangeText={text => setName(text)}
+                    />
                 </View>
                 <View style={styles.viewTextInput}>
-                    <TextInput style={styles.TextInput} placeholder="Email"/>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={text => setEmail(text)}
+                    />
                 </View>
                 <View style={styles.viewTextInput}>
-                    <TextInput style={styles.TextInput} placeholder="Password"/>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="Password"
+                        value={password}
+                        onChangeText={text => setPassword(text)}
+                        secureTextEntry
+                    />
                 </View>
             </View>
             <View style={styles.viewKeep}>
-                <TouchableOpacity style={styles.checkbox}><Image source={require('../../assets/Signup_Signin/check.png')}></Image></TouchableOpacity>
-                <Text style ={styles.textKeep}>Keep Me Signed In</Text>
+                <TouchableOpacity
+                    style={styles.checkbox}
+                    onPress={() => setKeepSignedIn(!keepSignedIn)}
+                >
+                    {keepSignedIn ? (
+                        <Image source={require('../../assets/Signup_Signin/check.png')} />
+                    ) : null}
+                </TouchableOpacity>
+                <Text style={styles.textKeep}>Keep Me Signed In</Text>
             </View>
             <View style={styles.viewKeep}>
-                <TouchableOpacity style={styles.checkbox}><Image source={require('../../assets/Signup_Signin/check.png')}></Image></TouchableOpacity>
-                <Text style ={styles.textKeep}>Email Me About Special Pricing</Text>
+                <TouchableOpacity
+                    style={styles.checkbox}
+                    onPress={() => setEmailSpecialPricing(!emailSpecialPricing)}
+                >
+                    {emailSpecialPricing ? (
+                        <Image source={require('../../assets/Signup_Signin/check.png')} />
+                    ) : null}
+                </TouchableOpacity>
+                <Text style={styles.textKeep}>Email Me About Special Pricing</Text>
             </View>
             <View style={styles.viewButton}>
-                <TouchableOpacity style={styles.button} onPress={handlePSignUpProcessScreen}>
+                <TouchableOpacity style={styles.button} onPress={handleSignUp}>
                     <Text style={styles.textbutton}>Create Account</Text>
                 </TouchableOpacity>
-                <Text style={styles.textAdready} onPress={handleLoginScreen}>Adready have an account</Text>
+                <Text style={styles.textAdready} onPress={handleLoginScreen}>Already have an account</Text>
             </View>
         </ImageBackground>
     )
 }
+
 const styles = StyleSheet.create({
     imageBackground:{
         flex:1,

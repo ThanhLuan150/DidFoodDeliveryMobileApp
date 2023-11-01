@@ -3,11 +3,14 @@ import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Im
 import { useNavigation } from '@react-navigation/native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { useRoute } from '@react-navigation/native';
-import fakeData from '../../Data/Data'
 const DetailMenuScreen = ()=>{
-    // const { menu } = fakeData;
+    const navigation = useNavigation();
     const route = useRoute();
     const { menu } = route.params;
+    const handleAddToCart = () => {
+        navigation.navigate('Cart', { menu });
+      };
+      
     return(
         <ParallaxScrollView
             backgroundColor="transparent"
@@ -99,8 +102,8 @@ const DetailMenuScreen = ()=>{
                     </View>
                 </View>
                 <View style={styles.viewAdd}>
-                    <TouchableOpacity style={styles.buttonAdd}>
-                        <Text style={styles.textAdd}>Add To Chart</Text>
+                    <TouchableOpacity style={styles.buttonAdd} onPress={handleAddToCart}>
+                        <Text style={styles.textAdd}>Add To Cart</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

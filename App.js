@@ -11,7 +11,6 @@ import SignUpScreen from './Screens/Author/SignUpScreen';
 import HomeScreen from './Screens/Home/HomeScreen';
 import ProfileScreen from './Screens/Profile/ProfileScreen';
 import CallScreen from './Screens/Chat/CallScreen';
-import CartScreen from './Screens/Cart/CartScreen';
 import ExploreRestaurant from './Screens/Home/ExploreRestaurantScreen';
 import ExploreMenu from './Screens/Home/ExploreMenuScreen';
 import FilterScreen from './Screens/Home/FilterScreen';
@@ -37,6 +36,8 @@ import DetailProduct from './Screens/Details/DetailProduct';
 import DetailMenuScreen from './Screens/Details/DetailMenuScreen';
 import ChatDetail from './Screens/Chat/ChatDetailScreen';
 import MessageScreen from './Screens/Chat/MessageScreen';
+import Total from './Screens/Orders/Total';
+import Card from './Screens/Orders/Cart';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -59,7 +60,6 @@ export default function App() {
         <Stack.Screen name="PasswordEditSuccesfullyScreen" component={PasswordEditSuccesfullyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="PasswordSucessfullyScreen" component={PasswordSucessfullyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="VoucherPromotion" component={VoucherPromotion} options={{ headerShown: false }} />
-        <Stack.Screen name="OrderDetail" component={OrderDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ConfirmOrderScreen" component={ConfirmOrderScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EditPaymentScreen" component={EditPaymentScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EditLocationScreen" component={EditLocationScreen} options={{ headerShown: false }} />
@@ -68,10 +68,10 @@ export default function App() {
         <Stack.Screen name="TrackOrderScreen" component={TrackOrderScreen} options={{ headerShown: false }} />
         <Stack.Screen name="DetailProduct" component={DetailProduct} options={{ headerShown: false }} />
         <Stack.Screen name="DetailMenuScreen" component={DetailMenuScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
-              
               <Tab.Screen name="Home" component={HomeScreen} options={{
                 tabBarIcon: () => (
                   <Image source={require('./assets/Home/Home.png')} />
@@ -86,7 +86,7 @@ export default function App() {
                 tabBarLabel: 'Profile',
                 headerShown: false,
               }} />
-              <Tab.Screen name="Cart" component={OrderDetailScreen} options={{
+              <Tab.Screen name="Cart" component={Card} options={{
                 tabBarIcon: () => (
                   <Image source={require('./assets/Home/Buy.png')} />
                 ),
