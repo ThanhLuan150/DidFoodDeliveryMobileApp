@@ -1,14 +1,39 @@
-import React from "react";
-import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Image } from "react-native";
+import React ,{useEffect, useState} from "react";
+import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text ,TextInput,Image,Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 const SignInScreen  = ()=>{
-    const navigation = useNavigation();
-    const handleSignUp = () => {
-        navigation.navigate('SignUp'); 
-      };
-    const handleHome = () => {
-        navigation.navigate('Home'); 
-      };
+  const navigation = useNavigation();
+  const [users, setUser] = useState([]);
+  const handleSignUp = () => {
+    navigation.navigate('SignUp'); 
+  };
+
+  useEffect(() => {
+      const getUser =  async () => {
+          try {
+              const data = await fetch('https://63a5721a318b23efa793a770.mockapi.io/api/users', {method: 'GET'});
+              const user = await data.json();
+              setUser(user);
+          }
+          catch {
+              console.error('Error');
+          }
+      }
+      getUser();
+  },[])
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    const user = users.find(user => user.email === email && user.password === password);
+    if (user) {
+      Alert.alert('Login Successfully');
+      navigation.navigate('Home', { user }); // Navigate to the 'Home' screen
+    } else {
+      Alert.alert('Error', 'Login failer. Please check information.');
+    }
+  };
     const handleForgetPassword = () =>{
       navigation.navigate('ForgetPasswordScreen')
     }
@@ -20,10 +45,13 @@ const SignInScreen  = ()=>{
                 </View>
                 <View style={styles.viewInput}>
                     <View style={styles.viewTextInput}>
-                        <TextInput style={styles.TextInput} placeholder="Email"/>
+                        <TextInput style={styles.TextInput} placeholder="Email" value={email}   onChangeText={text => setEmail(text)}/>
                     </View>
                     <View style={styles.viewTextInput}>
-                        <TextInput style={styles.TextInput} placeholder="Password"/>
+                        <TextInput style={styles.TextInput}  placeholder="Password"
+                        value={password}
+                        onChangeText={text => setPassword(text)}
+                        secureTextEntry/>
                     </View>
                 </View>
                 <View style={styles.viewOr}>
@@ -48,7 +76,7 @@ const SignInScreen  = ()=>{
                     <Text style={styles.textFo} onPress={handleSignUp}>Sign Up</Text>
                 </View>
                 <View style={styles.viewNext} >
-                    <TouchableOpacity style={styles.buttonNext} onPress={handleHome}>
+                    <TouchableOpacity style={styles.buttonNext} onPress={handleLogin}>
                         <Text style={styles.textNext}>Login</Text>
                     </TouchableOpacity>
                 </View>

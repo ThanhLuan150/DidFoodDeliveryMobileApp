@@ -1,14 +1,33 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity,ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import { useNavigation } from '@react-navigation/native';
 const ProfileScreen = () => {
+  const [userData, setUserData] = useState(null);
+  const navigation = useNavigation();
+  const handleLogout = () => {
+    navigation.navigate('SignIn'); 
+  };
+  useEffect(() => {
+    fetch('https://63a5721a318b23efa793a770.mockapi.io/api/users')
+      .then((response) => response.json())
+      .then((data) => {
+        setUserData(data[0]); // Assuming the first user from the API response
+      })
+      .catch((error) => {
+        console.error('Error fetching data: ', error);
+      });
+  }, []);
+
   return (
+    <ScrollView>
+      {userData && (
     <ParallaxScrollView
       backgroundColor="transparent"
       contentBackgroundColor="white"
       parallaxHeaderHeight={300}
       renderBackground={() => (
-        <Image  style={styles.Image} source={require('../../assets/Profile/PhotoProfile.png')} />
+        <Image style={styles.Image} source={{ uri: userData.image  }} />
       )}
     >
       <View style={styles.container}>
@@ -16,28 +35,31 @@ const ProfileScreen = () => {
           <View style={styles.viewScrollView}>
             <TouchableOpacity style={styles.ScrollTool}></TouchableOpacity>
           </View>
-          <View style={styles.viewButtonMember}>
-            <TouchableOpacity style={styles.ButtonMember}>
-              <Text style={styles.textMember}>Member Gold</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.viewNameProfile}>
-            <Text style={styles.textNameProfile}>Arash Ranjbaran</Text>
-            <TouchableOpacity style={styles.TouchableOpacity}>
-              <Image source={require('../../assets/Profile/EditIcon.png')} />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.textEmail}>awdesign.ar@gmail.com</Text>
-          <View style={styles.viewVoucher}>
-            <View style={styles.viewVoucherItem}>
-              <Image source={require('../../assets/Profile/VoucherIcon.png')} />
-              <Text style={styles.textVoucher}>You have 3 Voucher</Text>
-            </View>
-          </View>
-          <View style={styles.viewFavorite}>
-            <Text style={styles.textFacevorite}>Favorite</Text>
-          </View>
-          <View style={styles.viewListFavorite}>
+              <View style={styles.viewButtonMember}>
+                <TouchableOpacity style={styles.ButtonMember}>
+                  <Text style={styles.textMember}>Member Gold</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.ButtonMember} onPress={handleLogout}>
+                  <Text style={styles.textMember}>Logout</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.viewNameProfile}>
+                <Text style={styles.textNameProfile}>{userData.name}</Text>
+                <TouchableOpacity style={styles.TouchableOpacity}>
+                  <Image source={require('../../assets/Profile/EditIcon.png')} />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.textEmail}>{userData.email}</Text>
+              <View style={styles.viewVoucher}>
+                <View style={styles.viewVoucherItem}>
+                  <Image source={require('../../assets/Profile/VoucherIcon.png')} />
+                  <Text style={styles.textVoucher}>You have 3 Voucher</Text>
+                </View>
+              </View>
+              <View style={styles.viewFavorite}>
+                <Text style={styles.textFavorite}>Favorite</Text>
+              </View>
+              <View style={styles.viewListFavorite}>
             <View style={styles.viewListItemFavorite}>
               <Image source={require('../../assets/Profile/PhotoMenu1.png')} />
               <View style={styles.viewContent}>
@@ -90,18 +112,22 @@ const ProfileScreen = () => {
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
+          </View> 
         </ScrollView>
       </View>
     </ParallaxScrollView>
+      )}
+    </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   container:{
     flex:1,
   },
   Image:{
-    width:'100%'
+    width:'100%',
+    height: 350, 
   },
   ScrollView:{
     backgroundColor:'white',
@@ -121,7 +147,10 @@ const styles = StyleSheet.create({
   viewButtonMember:{
     paddingLeft:20,
     paddingRight:257,
-    paddingTop:28
+    paddingTop:28,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    gap:130
   },
   ButtonMember:{
     backgroundColor:'rgba(0, 255, 102, 0.10)',

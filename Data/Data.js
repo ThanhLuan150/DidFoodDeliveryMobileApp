@@ -69,7 +69,7 @@
         order:'2000 +',
         image: require("../assets/Home/MenuPhoto.png"),
         description: "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.",
-        price: "$15",
+        price: 45,
       },
       {
         id: 2,
@@ -79,7 +79,7 @@
         order:'3000 +',
         image: require("../assets/Home/Menu.png"),
         description: "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.",
-        price: "$20",
+        price: 50,
       },
       {
         id: 3,
@@ -89,9 +89,18 @@
         order:'4000 +',
         image: require("../assets/Home/Photo.png"),
         description: "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.",
-        price: "$25",
+        price: 67,
       },
-      
+      {
+        id: 4,
+        nameMenu: "Green Noddle",
+        name:'Noodle Home',
+        rating:'5.8',
+        order:'4000 +',
+        image: require("../assets/Home/Photo.png"),
+        description: "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.",
+        price: 67,
+      },
     ],
   };
   
