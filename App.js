@@ -38,13 +38,16 @@ import ChatDetail from './Screens/Chat/ChatDetailScreen';
 import MessageScreen from './Screens/Chat/MessageScreen';
 import Total from './Screens/Orders/Total';
 import Card from './Screens/Orders/Cart';
+import RatingDriverScreen from './Screens/Rating/RatingDriverScreen';
+import RatingFoodScreen from './Screens/Rating/RatingFoodScreen';
+import RatingRestaurantScreen from './Screens/Rating/RatingRestaurant';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="OnboardingIntroduce">
+      <Stack.Navigator initialRouteName="RatingDriverScreen">
         <Stack.Screen name="OnboardingIntroduce" component={OnboardingIntroduce} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext1" component={OnboardingIntroduceNext1} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingIntroduceNext2" component={OnboardingIntroduceNext2} options={{ headerShown: false }} />
@@ -69,6 +72,9 @@ export default function App() {
         <Stack.Screen name="DetailProduct" component={DetailProduct} options={{ headerShown: false }} />
         <Stack.Screen name="DetailMenuScreen" component={DetailMenuScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="RatingDriverScreen" component={RatingDriverScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="RatingFoodScreen" component={RatingFoodScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="RatingRestaurantScreen" component={RatingRestaurantScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>
