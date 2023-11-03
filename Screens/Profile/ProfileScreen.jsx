@@ -20,7 +20,7 @@ const ProfileScreen = () => {
   }, []);
 
   return (
-    <ScrollView>
+    <>
       {userData && (
     <ParallaxScrollView
       backgroundColor="transparent"
@@ -117,7 +117,7 @@ const ProfileScreen = () => {
       </View>
     </ParallaxScrollView>
       )}
-    </ScrollView>
+    </>
   );
 };
 
