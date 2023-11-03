@@ -1,84 +1,137 @@
-import React from "react";
-import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
+import React, { useState } from "react";
+import { View, ImageBackground, StyleSheet, TouchableOpacity, Text, ScrollView, Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-const FilterScreen = () =>{
+import fakeData from "../../Data/Data";
+
+const FilterScreen = () => {
+  const { products } = fakeData;  
+  const { menus } = fakeData;
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchType, setSearchType] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+  
+  const handleSearchKeywordChange = (keyword) => {
+    setSearchKeyword(keyword);
+    const menuResults = menus.filter((item) =>
+      item.name.toLowerCase().includes(keyword.toLowerCase())
+    );
+    const productResults = products.filter((item) =>
+      item.nameProduct.toLowerCase().includes(keyword.toLowerCase())
+    );
+    if (keyword.trim() === '') {
+      setSearchType(null);
+      setSearchResults([]);
+      return;
+    }
+    if (menuResults.length > 0) {
+      setSearchType('menu');
+      setSearchResults(menuResults);
+    } else if (productResults.length > 0) {
+      setSearchType('product');
+      setSearchResults(productResults);
+    } else {
+      setSearchType(null);
+      setSearchResults([]);
+    }
+  };
+
   const navigation = useNavigation();
-  const handleNotification = () =>{
-    navigation.navigate('NotificationScreen')
+
+  const handleNotification = () => {
+    navigation.navigate('NotificationScreen');
+  };
+
+  const handleDetailProduct = (product) => {
+    navigation.navigate('DetailProduct', { product });
+  }    
+  const handleDetailMenu =(menu) =>{
+    navigation.navigate('DetailMenuScreen', { menu } );
   }
-    return(
-        <ImageBackground source={require('../../assets/Home/Homebackground.png')}style={styles.imageBackground}>
-        <ScrollView>
-            <View style={styles.viewFiFa}>
-                <View>
-                    <Text style={styles.textFine}>Fine Your</Text>
-                    <Text style={styles.textFine}>Favorite Food</Text>
-                </View>
-                <TouchableOpacity onPress={handleNotification}>
-                    <Image  source={require('../../assets/Home/Notification.png')}></Image>
-                  </TouchableOpacity>
-            </View>
-            <View style={styles.viewSearch}>
-                <View style={styles.viewsearch}>
-                    <Image source={require('../../assets/Home/Search.png')} style={{ position:'relative',left:50,top:13 }}></Image>
-                    <TextInput style={styles.textInput} placeholder="What do you want to order"/>
-                </View>
-                <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
-            </View>
-            <View style={styles.viewType}>
-                <Text style={styles.textType}>Type</Text>
-            </View>
-            <View style={styles.viewListType}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.textRes}>Restaurant</Text>
+
+  return (
+    <ImageBackground source={require('../../assets/Home/Homebackground.png')} style={styles.imageBackground}>
+      <ScrollView>
+        <View style={styles.viewFiFa}>
+          <View>
+            <Text style={styles.textFine}>Find Your</Text>
+            <Text style={styles.textFine}>Favorite Food</Text>
+          </View>
+          <TouchableOpacity onPress={handleNotification}>
+            <Image source={require('../../assets/Home/Notification.png')}></Image>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.viewSearch}>
+          <View style={styles.viewsearch}>
+            <Image source={require('../../assets/Home/Search.png')} style={{ position: 'relative', left: 50, top: 13 }}></Image>
+            <TextInput style={styles.textInput} placeholder="What do you want to order" value={searchKeyword} onChangeText={handleSearchKeywordChange} />
+          </View>
+          <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
+        </View>
+        {/* <View style={styles.viewType}>
+          <Text style={styles.textType}>Type</Text>
+        </View>
+        <View style={styles.viewListType}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.textRes}>Restaurant</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.textRes}>Menu</Text>
+          </TouchableOpacity>
+        </View> */}
+        <View style={styles.viewbuttonSearch}>
+          <TouchableOpacity style={styles.Search}>
+            <Text style={styles.textbuttonSearch}>Search</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.viewListType}>
+          {searchType === 'product' && (
+            <FlatList
+              data={searchResults}
+              horizontal={false}
+              numColumns={2}
+              style={styles.viewListItem}
+              contentContainerStyle={{ flex: 1, width: '100%', flexDirection: 'column', gap: 20, height: 'auto' }}
+              renderItem={({ item }) => (
+                <TouchableOpacity style={styles.viewItem} key={item.id} onPress={() => handleDetailProduct(item)}>
+                  <View style={styles.viewImage}>
+                    <Image source={item.image} />
+                  </View>
+                  <Text style={styles.textVegan}>{item.nameProduct}</Text>
+                  <Text style={styles.textMin}>{item.min}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text  style={styles.textRes}>Menu</Text>
+              )}
+            />
+          )}
+
+          {searchType === 'menu' && (
+            <FlatList
+              data={searchResults}
+              horizontal={false}
+              style={styles.viewListItem}
+              contentContainerStyle={{ gap: 31, width: '100%' }}
+              renderItem={({ item }) => (
+                <TouchableOpacity style={styles.viewMenu} key={item.id} onPress={() => handleDetailMenu(item)}>
+                  <View style={styles.viewImageMenu}>
+                    <Image source={item.image} />
+                    <View style={styles.viewTexts}>
+                      <Text style={styles.textmenu}>{item.nameMenu}</Text>
+                      <Text style={styles.textName}>{item.name}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.viewPrice}>
+                    <Text style={styles.textPrice}>{item.price}</Text>
+                  </View>
                 </TouchableOpacity>
-            </View>
-            <View style={styles.viewType}>
-                <Text style={styles.textType}>Location</Text>
-            </View>
-            <View style={styles.viewListType}>
-                <TouchableOpacity style={styles.button}>
-                    <Text  style={styles.textRes}>1 Km</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.textRes}>&gt; 10 Km</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.textRes}>&lt;  10 Km</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.viewType}>
-                <Text style={styles.textType}>Food</Text>
-            </View>
-            <View style={styles.viewListType}>
-                <TouchableOpacity  style={styles.button} >
-                    <Text style={styles.textRes}>Cake</Text>
-                </TouchableOpacity>
-                <TouchableOpacity  style={styles.button}>
-                    <Text style={styles.textRes}>Soup</Text>
-                </TouchableOpacity>
-                <TouchableOpacity  style={styles.button}>
-                    <Text style={styles.textRes}>Main Course</Text>
-                </TouchableOpacity>
-                <TouchableOpacity  style={styles.button}>
-                    <Text style={styles.textRes}>Appetizer</Text>
-                </TouchableOpacity>
-                <TouchableOpacity  style={styles.button}>
-                    <Text style={styles.textRes}>Dessert</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.viewbuttonSearch}>
-                <TouchableOpacity  style={styles.Search}>
-                    <Text style={styles.textbuttonSearch}>Search</Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
+              )}
+              keyExtractor={(item) => item.id.toString()}
+            />
+          )}
+        </View>
+      </ScrollView>
     </ImageBackground>
-    )
-}
+  );
+};
+
 const styles =StyleSheet.create({
     imageBackground: {
         flex: 1,
@@ -124,6 +177,101 @@ const styles =StyleSheet.create({
         lineHeight:19.65,
         fontWeight:'400'
       },
+      viewListItem:{
+        paddingTop:20,
+        paddingBottom:20,
+        paddingLeft:30,
+        paddingRight:30,
+        flexDirection:'row',
+        width:'100%'
+      },
+      viewItem: {
+        backgroundColor: 'white',
+        width:'auto',
+        borderWidth:1,
+        borderColor:'#6B50F6',
+        borderRadius: 22,
+        shadowColor: 'rgba(90, 108, 234, 0.07)',
+        shadowOffset: { width: 12, height: 26 },
+        shadowOpacity: 1,
+        shadowRadius: 50,
+        elevation: 5,
+        marginRight: 20 
+      }
+    ,viewImage:{
+        paddingLeft:21,
+        paddingRight:30,
+        paddingBottom:17,
+        paddingTop:20,
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    textVegan:{
+        fontSize:16,
+        fontWeight:'600',
+        lineHeight:20.96,
+        color:'#22242E',
+        textAlign:'center',
+        paddingLeft:25,
+        paddingRight:25,
+        paddingBottom:4
+    },
+    textMin:{
+        fontSize:13,
+        paddingBottom:26,
+        fontWeight:'400',
+        lineHeight:17.03,
+        color:'#22242E',
+        textAlign:'center',
+        } ,
+        viewMenu:{
+          flexDirection:'row',
+          justifyContent:'space-between',
+          backgroundColor: 'white',
+          borderWidth:1,
+          borderColor:'#6B50F6',
+          borderRadius: 22,
+          shadowColor: 'rgba(90, 108, 234, 0.07)',
+          shadowOffset: { width: 12, height: 26 },
+          shadowOpacity: 1,
+          shadowRadius: 50,
+          elevation: 5, // Điều chỉnh giá trị để thay đổi độ sâu của bóng đổ (cho Android)
+          paddingLeft:10,
+          paddingTop:12,
+          paddingBottom:12,
+          paddingRight:29
+        } ,
+        viewImageMenu:{
+            flexDirection:'row',
+            gap:21,
+            
+        } ,
+        viewTexts:{
+          paddingTop:13
+        },
+        textmenu:{
+          fontSize:15,
+          fontWeight:'500',
+          lineHeight:19.46,
+          color:'#22242E'
+        },
+        textName:{
+          fontSize:13,
+          color:'gray',
+          fontWeight:'400',
+        },
+        viewPrice:{
+          paddingTop:18,
+          paddingBottom:20,
+          
+        },
+        textPrice:{
+          fontSize:22,
+          fontWeight:'600',
+          color:'#6B50F6',
+          lineHeight:28.83
+        },
       viewListType:{
         paddingLeft: 25,
         flexDirection: 'row',
@@ -163,8 +311,61 @@ const styles =StyleSheet.create({
         fontSize:15,
         fontWeight:'500',
         textAlign:'center'
-      }
-
-
+      },
+      viewListItem:{
+        paddingTop:20,
+        paddingBottom:20,
+        paddingLeft:15,
+        paddingRight:15,
+        flexDirection:'row',
+        width:'100%'
+      },
+    viewMenu:{
+      flexDirection:'row',
+      justifyContent:'space-between',
+      backgroundColor: 'white',
+      borderWidth:1,
+      borderColor:'#6B50F6',
+      borderRadius: 22,
+      shadowColor: 'rgba(90, 108, 234, 0.07)',
+      shadowOffset: { width: 12, height: 26 },
+      shadowOpacity: 1,
+      shadowRadius: 50,
+      elevation: 5, // Điều chỉnh giá trị để thay đổi độ sâu của bóng đổ (cho Android)
+      paddingLeft:10,
+      paddingTop:12,
+      paddingBottom:12,
+      paddingRight:29
+    } ,
+    viewImageMenu:{
+        flexDirection:'row',
+        gap:21,
+        
+    } ,
+    viewTexts:{
+      paddingTop:13
+    },
+    textmenu:{
+      fontSize:15,
+      fontWeight:'500',
+      lineHeight:19.46,
+      color:'#22242E'
+    },
+    textName:{
+      fontSize:13,
+      color:'gray',
+      fontWeight:'400',
+    },
+    viewPrice:{
+      paddingTop:18,
+      paddingBottom:20,
+      
+    },
+    textPrice:{
+      fontSize:22,
+      fontWeight:'600',
+      color:'#6B50F6',
+      lineHeight:28.83
+    }
 })
 export default FilterScreen;
