@@ -18,7 +18,7 @@ const OrderCard = ({ onTotalChange, total }) => {
     
     const incrementQuantity = (itemId) => {
       const currentQuantity = itemQuantities[itemId] || 1; // Lấy số lượng hiện tại hoặc mặc định là 1 nếu không tồn tại.
-      if (currentQuantity < 10) {
+      if (currentQuantity >  0) {
         const newQuantity = currentQuantity + 1; // Tăng số lượng, nhưng không được lớn hơn 10.
         setItemQuantities({ ...itemQuantities, [itemId]: newQuantity }); // Cập nhật state itemQuantities với số lượng mới.
       }
@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
  viewDetailItem:{
      flexDirection:'row',
      backgroundColor:'white',
-     justifyContent:'space-between',
+    //  justifyContent:'space-between',
+    gap:50,
      elevation: 2, 
      shadowOpacity: 1,
      shadowRadius: 5 ,
@@ -164,8 +165,9 @@ const styles = StyleSheet.create({
  },
  viewNumber:{
      flexDirection:'row',
-     alignItems: 'center',
-     justifyContent:'center',
+    //  alignItems: 'center',
+    //  justifyContent:'center',
+     paddingLeft:100,
      gap:18,
      paddingRight:20
  },

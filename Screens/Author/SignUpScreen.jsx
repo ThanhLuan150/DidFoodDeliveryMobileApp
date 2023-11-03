@@ -5,7 +5,6 @@ import axios from 'axios';
 
 const SignUpScreen = () => {
     const navigation = useNavigation();
-
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,13 +16,13 @@ const SignUpScreen = () => {
     };
 
     const handleSignUp = () => {
-        // Perform client-side validation here
+      // Thực hiện xác thực phía client tại đây
 
         if (!name || !email || !password) {
             return;
         }
 
-        // Construct the user object to be sent to the API
+       // Xây dựng đối tượng người dùng để gửi tới mockAPI
         const user = {
             name,
             email,
@@ -33,17 +32,16 @@ const SignUpScreen = () => {
         // Post user data to the mock API
         axios.post('https://63a5721a318b23efa793a770.mockapi.io/api/users', user)
             .then(response => {
-                // Handle successful registration
+                // Xử lý đăng ký thành công
                 console.log("User registered:", response.data);
                 Alert.alert("Sign up successfully");
-                // Navigate to the next screen or perform other actions
+               // Điều hướng đến màn hình tiếp theo hoặc thực hiện các hành động khác
                 navigation.navigate('SignIn');
             })
             .catch(error => {
-                // Handle registration error
+               // Xử lý lỗi đăng ký
                 console.error("Registration failed:", error);
-
-                // Add error handling and display error messages if needed
+                Alert.alert("Sign up unsuccessfully");
             });
     };
 

@@ -91,16 +91,6 @@
         description: "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.",
         price: 67,
       },
-      {
-        id: 4,
-        nameMenu: "Green Noddle",
-        name:'Noodle Home',
-        rating:'5.8',
-        order:'4000 +',
-        image: require("../assets/Home/Photo.png"),
-        description: "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.",
-        price: 67,
-      },
     ],
   };
   
