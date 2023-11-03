@@ -4,49 +4,60 @@ import { useNavigation } from '@react-navigation/native';
 import fakeData from "../../Data/Data";
 
 const FilterScreen = () => {
-  const { products } = fakeData;  
-  const { menus } = fakeData;
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const [searchType, setSearchType] = useState(null);
-  const [searchResults, setSearchResults] = useState([]);
-  
-  const handleSearchKeywordChange = (keyword) => {
-    setSearchKeyword(keyword);
-    const menuResults = menus.filter((item) =>
-      item.name.toLowerCase().includes(keyword.toLowerCase())
-    );
-    const productResults = products.filter((item) =>
-      item.nameProduct.toLowerCase().includes(keyword.toLowerCase())
-    );
-    if (keyword.trim() === '') {
-      setSearchType(null);
-      setSearchResults([]);
-      return;
-    }
-    if (menuResults.length > 0) {
-      setSearchType('menu');
-      setSearchResults(menuResults);
-    } else if (productResults.length > 0) {
-      setSearchType('product');
-      setSearchResults(productResults);
-    } else {
-      setSearchType(null);
-      setSearchResults([]);
-    }
-  };
+        // Khởi tạo state và các hàm xử lý sự kiện
+      const { products } = fakeData;  
+      const { menus } = fakeData;
+      const [searchKeyword, setSearchKeyword] = useState(''); // State cho từ khóa tìm kiếm
+      const [searchType, setSearchType] = useState(null); // State cho loại tìm kiếm (menu hoặc product)
+      const [searchResults, setSearchResults] = useState([]); // State cho kết quả tìm kiếm
 
-  const navigation = useNavigation();
+      // Hàm xử lý thay đổi từ khóa tìm kiếm
+      const handleSearchKeywordChange = (keyword) => {
+        setSearchKeyword(keyword);
+        // Lọc danh sách menu dựa trên từ khóa
+        const menuResults = menus.filter((item) =>
+          item.name.toLowerCase().includes(keyword.toLowerCase())
+        );
+        // Lọc danh sách sản phẩm dựa trên từ khóa
+        const productResults = products.filter((item) =>
+          item.nameProduct.toLowerCase().includes(keyword.toLowerCase())
+        );
 
-  const handleNotification = () => {
-    navigation.navigate('NotificationScreen');
-  };
+        // Kiểm tra và cập nhật state
+        if (keyword.trim() === '') {
+          setSearchType(null);
+          setSearchResults([]);
+          return;
+        }
+        if (menuResults.length > 0) {
+          setSearchType('menu');
+          setSearchResults(menuResults);
+        } else if (productResults.length > 0) {
+          setSearchType('product');
+          setSearchResults(productResults);
+        } else {
+          setSearchType(null);
+          setSearchResults([]);
+        }
+      };
 
-  const handleDetailProduct = (product) => {
-    navigation.navigate('DetailProduct', { product });
-  }    
-  const handleDetailMenu =(menu) =>{
-    navigation.navigate('DetailMenuScreen', { menu } );
-  }
+      // Sử dụng React Navigation để điều hướng
+      const navigation = useNavigation();
+
+      // Hàm xử lý điều hướng đến màn hình thông báo
+      const handleNotification = () => {
+        navigation.navigate('NotificationScreen');
+      };
+
+      // Hàm xử lý điều hướng đến màn hình chi tiết sản phẩm
+      const handleDetailProduct = (product) => {
+        navigation.navigate('DetailProduct', { product });
+      }
+
+      // Hàm xử lý điều hướng đến màn hình chi tiết menu
+      const handleDetailMenu = (menu) => {
+        navigation.navigate('DetailMenuScreen', { menu });
+      }
 
   return (
     <ImageBackground source={require('../../assets/Home/Homebackground.png')} style={styles.imageBackground}>
@@ -67,7 +78,7 @@ const FilterScreen = () => {
           </View>
           <Image source={require('../../assets/Home/FilterIcon.png')}></Image>
         </View>
-        {/* <View style={styles.viewType}>
+        <View style={styles.viewType}>
           <Text style={styles.textType}>Type</Text>
         </View>
         <View style={styles.viewListType}>
@@ -77,7 +88,7 @@ const FilterScreen = () => {
           <TouchableOpacity style={styles.button}>
             <Text style={styles.textRes}>Menu</Text>
           </TouchableOpacity>
-        </View> */}
+        </View>
         <View style={styles.viewbuttonSearch}>
           <TouchableOpacity style={styles.Search}>
             <Text style={styles.textbuttonSearch}>Search</Text>
