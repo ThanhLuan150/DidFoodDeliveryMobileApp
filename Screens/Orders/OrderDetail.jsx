@@ -18,7 +18,7 @@ const OrderCard = ({ onTotalChange, total }) => {
     
     const incrementQuantity = (itemId) => {
       const currentQuantity = itemQuantities[itemId] || 1; // Lấy số lượng hiện tại hoặc mặc định là 1 nếu không tồn tại.
-      if (currentQuantity >  0) {
+      if (currentQuantity < 10) {
         const newQuantity = currentQuantity + 1; // Tăng số lượng, nhưng không được lớn hơn 10.
         setItemQuantities({ ...itemQuantities, [itemId]: newQuantity }); // Cập nhật state itemQuantities với số lượng mới.
       }
@@ -103,9 +103,6 @@ const styles = StyleSheet.create({
     paddingLeft:25,
     paddingRight:190 
  },
- deleteImage:{
-    marginLeft:23
- },
  textOrderDetail:{
      color:'#22242E',
      fontSize:25,
@@ -128,13 +125,12 @@ const styles = StyleSheet.create({
      height:200,
      paddingTop:38,
      paddingRight:38,
-     paddingLeft:2
+     paddingLeft:20
  },
  viewDetailItem:{
      flexDirection:'row',
      backgroundColor:'white',
-    //  justifyContent:'space-between',
-    gap:50,
+     justifyContent:'space-between',
      elevation: 2, 
      shadowOpacity: 1,
      shadowRadius: 5 ,
@@ -165,9 +161,8 @@ const styles = StyleSheet.create({
  },
  viewNumber:{
      flexDirection:'row',
-    //  alignItems: 'center',
-    //  justifyContent:'center',
-     paddingLeft:100,
+     alignItems: 'center',
+     justifyContent:'center',
      gap:18,
      paddingRight:20
  },
