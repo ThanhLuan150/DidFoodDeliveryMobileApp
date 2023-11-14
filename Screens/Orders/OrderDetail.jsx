@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Swipeout from 'react-native-swipeout';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import fakeData from "../../Data/Data";
-import Swipeable from 'react-native-swipeable';
 
 const OrderCard = ({ onTotalChange, total }) => {
     const { menus } = fakeData; // Trích xuất danh sách thực đơn từ đối tượng fakeData.
