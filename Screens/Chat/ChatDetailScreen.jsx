@@ -1,14 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, ImageBackground, StyleSheet, TouchableOpacity, Text, ScrollView, Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 const ChatDetail = () => {
-    const navigation = useNavigation();
-    const handleCallScreen = () => {
-        navigation.navigate("CallScreen");
-    }
-    const handleHomeScreen = () => {
-        navigation.navigate("Home");
-    }
+  const route = useRoute();
+  const { chat } = route.params;
+  const navigation = useNavigation();
+
+  // Khởi tạo state để lưu tin nhắn mới và lịch sử trò chuyện
+  const [messageInput, setMessageInput] = useState(""); // Lưu nội dung tin nhắn mới
+  const [chatHistory, setChatHistory] = useState([...chat.chatHistory]);  // Lưu lịch sử trò chuyện
+
+
+  const handleCallScreen = () => {
+    navigation.navigate("CallScreen");
+  };
+
+  const handleHomeScreen = () => {
+    navigation.navigate("Home");
+  };
+
+// Gửi tin nhắn mới
+  const sendMessage = () => {
+    // Tạo một tin nhắn mới với người gửi là 'user' và nội dung là messageInput
+    const newMessage = { sender: 'user', text: messageInput };
+    const updatedChatHistory = [...chatHistory, newMessage];
+    setChatHistory(updatedChatHistory); // Cập nhật trạng thái với lịch sử trò chuyện mới bao gồm tin nhắn vừa gửi
+
+    setMessageInput(""); // Xóa nội dung trong ô nhập sau khi gửi
+  };
     return (
 
         <ImageBackground source={require('../../assets/Message/Pattern.png')} resizeMode="contain" style={styles.container}>
@@ -18,38 +38,37 @@ const ChatDetail = () => {
                 <Text style={styles.chatText}>Chats</Text>
             </View>
             <View style={styles.person}>
-                <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile.png')}></Image>
-                <Text style={styles.name}>Louis Kelly</Text>
-                <Text style={styles.shortText}><View style={styles.statuspoint}></View> Online</Text>
+                <Image style={styles.avt} source={chat.avatar}></Image>
+                <Text style={styles.name}>{chat.name}</Text>
+                <Text style={styles.shortText}><View style={styles.statuspoint}></View>   {chat.status}</Text>
                 <TouchableOpacity style={styles.calllogo} onPress={handleCallScreen}>
                     <Image source={require('../../assets/Message/CallLogo.png')}></Image>
                 </TouchableOpacity>
             </View>
             <View style={{ margin: 20, width: '100% - 40' }}>
-                <View style={[styles.message, styles.friendmessage]}>
-                    <Text>Just to order</Text>
+            <FlatList
+                data={chatHistory}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => (
+                <View style={[styles.message, item.sender === 'friend' ? styles.friendmessage : styles.userMessage]}>
+                    <Text >{item.text}</Text>
                 </View>
-                <View style={styles.message}>
-                    <Text style={styles.textmessage}>Okay, for what level of spiciness?</Text>
-                </View>
-                <View style={[styles.message, styles.friendmessage]}>
-                    <Text>Okay, wait a minutes!</Text>
-                </View>
-                <View style={styles.message}>
-                    <Text style={styles.textmessage}>Okay I'm waiting!</Text>
-                </View>
+                )}
+                 />
             </View>
             <View style={{ position: "absolute", width: '100%', right: '0%', bottom: 0, backgroundColor: "#F6F6F6"}}>
                 <View style={styles.chatInput}>
                     <TextInput
-                        style={styles.input}
-                        placeholder="Nhập tin nhắn..."
+                    style={styles.input}
+                    placeholder="Nhập tin nhắn..."
+                    value={messageInput}
+                    onChangeText={(text) => setMessageInput(text)}
                     />
-                    <TouchableOpacity style={styles.sendBtn} onPress={this.sendMessage}>
-                        <Image style={{ height: 24, width: 24 }} source={require('../../assets/Message/IconSend.png')}></Image>
+                    <TouchableOpacity style={styles.sendBtn} onPress={sendMessage}>
+                    <Image style={{ height: 24, width: 24 }} source={require('../../assets/Message/IconSend.png')} />
                     </TouchableOpacity>
                 </View>
-            </View>
+                </View>
         </ImageBackground>
     )
 }
