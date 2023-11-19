@@ -134,6 +134,26 @@
           { sender: 'user', text: 'Im good, thank you!' },
         ],
     },
+    ],
+    notification:[
+      {
+        id:1,
+        image: require('../assets/Notification/checked.png'),
+        name:'Your order has been taken by the driver',
+        actionOrder:'Recently'
+      },
+      {
+        id:2,
+        image: require('../assets/Notification/checked.png'),
+        name:'Topup for $100 was successful',
+        actionOrder:'10.00 Am'
+      },
+      {
+        id:3,
+        image:require('../assets/Notification/money.png'),
+        name:'Your order has been canceled',
+        actionOrder:'22 Juny 2021'
+      }
     ]
   };
   
