@@ -1,10 +1,12 @@
 import React from "react";
 import { View, ImageBackground, StyleSheet, TouchableOpacity, Text, Image, TextInput, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import fakeData from "../../Data/Data";
 const MessageScreen = () => {
+    const { chats } = fakeData;
     const navigation = useNavigation();
-    const handleChatDetailScreen = () => {
-        navigation.navigate("ChatDetail");
+    const handleChatDetailScreen = (chat) => {
+        navigation.navigate("ChatDetail" , { chat });
     }
     const handleHomeScreen = () => {
         navigation.navigate("Home");
@@ -17,27 +19,18 @@ const MessageScreen = () => {
             <View style={{ marginTop: 19, marginBottom: 2, left: 25 }}>
                 <Text style={styles.chatText}>Chats</Text>
             </View>
-            <View>
-                <TouchableOpacity style={styles.person} onPress={handleChatDetailScreen}>
-                    <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile.png')}></Image>
-                    <Text style={styles.name}>Louis Kelly</Text>
-                    <Text style={styles.time}>20:00</Text>
-                    <Text style={styles.shortText}>Your Order Just Adrrived!</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.person}>
-                    <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile(1).png')}></Image>
-                    <Text style={styles.name}>Paul Koch</Text>
-                    <Text style={styles.time}>20:00</Text>
-                    <Text style={styles.shortText}>Your Order Just Adrrived!</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.person}>
-                    <Image style={styles.avt} source={require('../../assets/Message/PhotoProfile(2).png')}></Image>
-                    <Text style={styles.name}>Carla Klein</Text>
-                    <Text style={styles.time}>20:00</Text>
-                    <Text style={styles.shortText}>Your Order Just Adrrived!</Text>
-                </TouchableOpacity>
-            </View>
-
+            <FlatList
+                data={chats}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                    <TouchableOpacity style={styles.person} onPress={ () =>handleChatDetailScreen (item)} key={item.id} >
+                        <Image style={styles.avt} source={item.avatar}></Image>
+                        <Text style={styles.name}>{item.name}</Text>
+                        <Text style={styles.time}>{item.time}</Text>
+                        <Text style={styles.shortText}>{item.message}</Text>
+                    </TouchableOpacity>
+                )}
+            />
         </ImageBackground>
     )
 }

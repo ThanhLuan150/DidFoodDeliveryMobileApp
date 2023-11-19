@@ -41,7 +41,6 @@ import Card from './Screens/Orders/Cart';
 import RatingDriverScreen from './Screens/Rating/RatingDriverScreen';
 import RatingFoodScreen from './Screens/Rating/RatingFoodScreen';
 import RatingRestaurantScreen from './Screens/Rating/RatingRestaurant';
-import EditProfileScreen from './Screens/Profile/EditProfileScreen';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -76,7 +75,6 @@ export default function App() {
         <Stack.Screen name="RatingDriverScreen" component={RatingDriverScreen} options={{ headerShown: false }} />
         <Stack.Screen name="RatingFoodScreen" component={RatingFoodScreen} options={{ headerShown: false }} />
         <Stack.Screen name="RatingRestaurantScreen" component={RatingRestaurantScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => (
             <Tab.Navigator>

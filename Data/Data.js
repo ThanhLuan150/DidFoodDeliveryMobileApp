@@ -92,6 +92,46 @@
         price: 67,
       },
     ],
+    chats:[
+      {
+        id: '1',
+        name: 'Louis Kelly',
+        time: '20:00',
+        message: 'Your Order TL Just Arrived!',
+        avatar: require('../assets/Message/PhotoProfile.png'),
+        status:'Online',
+        chatHistory: [
+          { sender: 'friend', text: 'Just to order?' },
+          { sender: 'user', text: 'Okay, for what level of spiciness?' },
+          { sender: 'friend', text: 'Okay, wait a minutes!' },
+          { sender: 'user', text: "Okay I'm waiting!" },
+        ],
+    },
+    {
+        id: '2',
+        name: 'Paul Koch',
+        time: '20:00',
+        message: 'Your Order VN Just Arrived!',
+        avatar: require('../assets/Message/PhotoProfile(1).png'),
+        status:'Offline',
+        chatHistory: [
+          { sender: 'friend', text: 'Hi, how are you Nhat?' },
+          { sender: 'user', text: 'Im good, thank you!' },
+        ],
+    },
+    {
+        id: '3',
+        name: 'Carla Klein',
+        time: '20:00',
+        message: 'Your Order LT Just Arrived!',
+        avatar: require('../assets/Message/PhotoProfile(2).png'),
+        status:'Online',
+        chatHistory: [
+          { sender: 'friend', text: 'Hi, how are you Thien?' },
+          { sender: 'user', text: 'Im good, thank you!' },
+        ],
+    },
+    ]
   };
   
   export default fakeData;
