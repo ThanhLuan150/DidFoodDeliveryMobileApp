@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigation } from '@react-navigation/native';
 import { View ,ImageBackground,StyleSheet, TouchableOpacity, Text, ScrollView,Image, TextInput, FlatList } from "react-native";
+import fakeData from "../../Data/Data";
 const NotificationScreen = () =>{
+    const {notification} = fakeData;
     const navigation = useNavigation();
     const handleGoBack = () => {
         navigation.goBack();
@@ -15,29 +17,20 @@ const NotificationScreen = () =>{
                 <View style={styles.viewNotification}>
                     <Text style={styles.textNotification}>Notification</Text>
                 </View>
-                <View style={styles.viewListNotification}>
-                    <View style={styles.viewitemNotification}>
-                       <Image source={require('../../assets/Notification/checked.png')}></Image>
-                       <View>
-                            <Text style={styles.textYour}>Your order has been taken by the driver</Text>
-                            <Text style={styles.textRecently}>Recently</Text>
-                       </View>
-                    </View>
-                    <View style={styles.viewitemNotification}>
-                       <Image source={require('../../assets/Notification/money.png')}></Image>
-                       <View>
-                            <Text style={styles.textYour}>Topup for $100 was successful</Text>
-                            <Text style={styles.textRecently}>10.00 Am</Text>
-                       </View>
-                    </View>
-                    <View style={styles.viewitemNotification}>
-                       <Image source={require('../../assets/Notification/x-button.png')}></Image>
-                       <View>
-                            <Text style={styles.textYour}>Your order has been canceled</Text>
-                            <Text style={styles.textRecently}>22 Juny 2021</Text>
-                       </View>
-                    </View>
-                </View>
+                <FlatList style={styles.viewListNotification}
+                    data={ notification}
+                    contentContainerStyle={{gap: 10 }}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => (
+                    <View style={styles.viewitemNotification} key={item.id}>
+                        <Image source={item.image}></Image>
+                        <View>
+                             <Text style={styles.textYour}>{item.name}</Text>
+                             <Text style={styles.textRecently}>{item.actionOrder}</Text>
+                        </View>
+                     </View>
+                    )}
+                />
             </ScrollView>
         </ImageBackground>
     )
