@@ -4,13 +4,18 @@ import { useNavigation } from '@react-navigation/native';
 import fakeData from "../../Data/Data";
 
 const FilterScreen = () => {
-        // Khởi tạo state và các hàm xử lý sự kiện
+      // Sử dụng React Navigation để điều hướng
+      const navigation = useNavigation();
+
+      // Khởi tạo state và các hàm xử lý sự kiện
       const { products } = fakeData;  
       const { menus } = fakeData;
       const [searchKeyword, setSearchKeyword] = useState(''); // State cho từ khóa tìm kiếm
       const [searchType, setSearchType] = useState(null); // State cho loại tìm kiếm (menu hoặc product)
       const [searchResults, setSearchResults] = useState([]); // State cho kết quả tìm kiếm
-
+      const [activeTab, setActiveTab] = useState('Menu'); // Thêm state để theo dõi tab đang active
+      // const [activeDistance, setActiveDistance] = useState('1 Km'); // State để theo dõi khoảng cách đang chọn
+      const [activeLocation, setActiveLocation] = useState(''); // State để theo dõi vị trí đang chọn
       // Hàm xử lý thay đổi từ khóa tìm kiếm
       const handleSearchKeywordChange = (keyword) => {
         setSearchKeyword(keyword);
@@ -40,10 +45,23 @@ const FilterScreen = () => {
           setSearchResults([]);
         }
       };
+     // Hàm xử lý thay đổi tab
+      const handleTabChange = (tab) => {
+        setActiveTab(tab); // Cập nhật tab được chọn
+        setSearchType(tab.toLowerCase()); // Cập nhật loại tìm kiếm dựa trên tab được chọn
+        setSearchResults(tab === 'Menu' ? menus : products); // Cập nhật kết quả tìm kiếm dựa trên tab được chọn
+      };
 
-      // Sử dụng React Navigation để điều hướng
-      const navigation = useNavigation();
+      // Hàm xử lý thay đổi vị trí
+      const handleLocationChange = (location) => {
+        setActiveLocation(location); // Cập nhật vị trí đang chọn
+        // Áp dụng bộ lọc theo vị trí đang chọn
+        const filteredResults = activeTab === 'Menu'
+          ? menus.filter(item => item.location === location)
+          : products.filter(item => item.location === location);
 
+        setSearchResults(filteredResults); // Cập nhật kết quả tìm kiếm dựa trên vị trí và tab
+      };
       // Hàm xử lý điều hướng đến màn hình thông báo
       const handleNotification = () => {
         navigation.navigate('NotificationScreen');
@@ -58,7 +76,7 @@ const FilterScreen = () => {
       const handleDetailMenu = (menu) => {
         navigation.navigate('DetailMenuScreen', { menu });
       }
-
+     
   return (
     <ImageBackground source={require('../../assets/Home/Homebackground.png')} style={styles.imageBackground}>
       <ScrollView>
@@ -82,16 +100,40 @@ const FilterScreen = () => {
           <Text style={styles.textType}>Type</Text>
         </View>
         <View style={styles.viewListType}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.textRes}>Restaurant</Text>
+        <TouchableOpacity
+            style={[styles.button, activeTab === 'Product' && styles.activeTab]}
+            onPress={() => handleTabChange('Product')}
+          >
+            <Text style={styles.textRes}>Product</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={[styles.button, activeTab === 'Menu' && styles.activeTab]}
+            onPress={() => handleTabChange('Menu')}
+          >
             <Text style={styles.textRes}>Menu</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.viewbuttonSearch}>
-          <TouchableOpacity style={styles.Search}>
-            <Text style={styles.textbuttonSearch}>Search</Text>
+        <View style={styles.viewType}>
+          <Text style={styles.textType}>Location</Text>
+        </View>
+        <View style={styles.viewListType}>
+        <TouchableOpacity
+            style={[styles.button, activeLocation === '9 km' && styles.activeButton]}
+            onPress={() => handleLocationChange('9 km')}
+          >
+            <Text style={styles.textRes}>9 Km</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, activeLocation === '10 km' && styles.activeButton]}
+            onPress={() => handleLocationChange('10 km')}
+          >
+            <Text style={styles.textRes}>10 Km</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, activeLocation === '19 km' && styles.activeButton]}
+            onPress={() => handleLocationChange('19 km')}
+          >
+            <Text style={styles.textRes}>19 Km</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.viewListType}>
